@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/db.changelog-dealership.xml
+  - include:
+      file: db/changelog/db.changelog-car.xml

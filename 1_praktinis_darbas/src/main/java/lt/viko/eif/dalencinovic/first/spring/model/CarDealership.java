@@ -64,9 +64,8 @@ public class CarDealership extends BaseEntity{
 
     @Override
     public String toString() {
-        return "CarDealership{" +
-                "name='" + name + '\'' +
-                ", cars=" + cars +
-                '}';
+        return "CarDealership: " +
+                "\n\tname=" + name +
+                "\n\tcars=" + cars ;
     }
 }

@@ -1,6 +1,7 @@
 package lt.viko.eif.dalencinovic.first.spring.model;
 
 import jakarta.persistence.*;
+import jakarta.xml.bind.annotation.XmlTransient;
 
 @MappedSuperclass
 public class BaseEntity {
@@ -12,6 +13,7 @@ public class BaseEntity {
     public BaseEntity() {
     }
 
+    @XmlTransient
     public int getId() {
         return id;
     }

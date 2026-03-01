@@ -1,5 +1,6 @@
 package lt.viko.eif.dalencinovic.first.spring.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -10,6 +11,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 @Table(name = "car")
 public class Car extends BaseEntity{
     private String model;
+    @Column(name="car_year")
     private int year;
     private float price;
     private boolean electric;
@@ -58,11 +60,10 @@ public class Car extends BaseEntity{
 
     @Override
     public String toString() {
-        return "Car{" +
-                "model='" + model + '\'' +
-                ", year=" + year +
-                ", price=" + price +
-                ", electric=" + electric +
-                '}';
+        return "\n\t\tCar: " +
+                "\n\t\t\tmodel='" + model + '\'' +
+                "\n\t\t\t year=" + year +
+                "\n\t\t\t price=" + price +
+                "\n\t\t\t electric=" + electric;
     }
 }
