@@ -6,6 +6,10 @@ import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
+/**
+ * Represents a car entity in the dealership.
+ * This class is used both as JPA entity and JAXB XML element.
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name = "car")
@@ -16,9 +20,15 @@ public class Car extends BaseEntity{
     private float price;
     private boolean electric;
 
+    /**
+     * Default constructor required by JPA and JAXB.
+     */
     public Car() {
     }
 
+    /**
+     * Constructor for creating car instance.
+     */
     public Car(String model, int year, float price, boolean electric) {
         this.model = model;
         this.year = year;

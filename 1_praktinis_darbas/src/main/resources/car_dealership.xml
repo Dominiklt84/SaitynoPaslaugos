@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE carDealership SYSTEM "carDealership.dtd">
+<carDealership>
+    <id>1</id>
+    <name>AutoPlius</name>
+    <establishedYear>2020</establishedYear>
+    <totalIncome>300000.6</totalIncome>
+    <cars>
+        <car>
+            <id>1</id>
+            <model>Tesla Model 3</model>
+            <year>2023</year>
+            <price>45000.0</price>
+            <electric>true</electric>
+        </car>
+        <car>
+            <id>2</id>
+            <model>BMW X5</model>
+            <year>2022</year>
+            <price>62000.0</price>
+            <electric>false</electric>
+        </car>
+        <car>
+            <id>3</id>
+            <model>Audi A6</model>
+            <year>2021</year>
+            <price>55000.0</price>
+            <electric>false</electric>
+        </car>
+        <car>
+            <id>4</id>
+            <model>Toyota Corolla</model>
+            <year>2020</year>
+            <price>22000.0</price>
+            <electric>false</electric>
+        </car>
+        <car>
+            <id>5</id>
+            <model>Ford Mustang</model>
+            <year>2023</year>
+            <price>48000.0</price>
+            <electric>false</electric>
+        </car>
+        <car>
+            <id>6</id>
+            <model>Nissan Leaf</model>
+            <year>2022</year>
+            <price>30000.0</price>
+            <electric>true</electric>
+        </car>
+        <car>
+            <id>7</id>
+            <model>Volkswagen Golf</model>
+            <year>2021</year>
+            <price>25000.0</price>
+            <electric>false</electric>
+        </car>
+        <car>
+            <id>8</id>
+            <model>Hyundai Ioniq 5</model>
+            <year>2023</year>
+            <price>42000.0</price>
+            <electric>true</electric>
+        </car>
+        <car>
+            <id>9</id>
+            <model>Kia Sportage</model>
+            <year>2022</year>
+            <price>27000.0</price>
+            <electric>false</electric>
+        </car>
+        <car>
+            <id>10</id>
+            <model>Mercedes C-Class</model>
+            <year>2021</year>
+            <price>58000.0</price>
+            <electric>false</electric>
+        </car>
+    </cars>
+</carDealership>

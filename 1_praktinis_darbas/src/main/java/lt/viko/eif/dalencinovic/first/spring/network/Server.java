@@ -1,24 +1,35 @@
 package lt.viko.eif.dalencinovic.first.spring.network;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * Simple TCP server that sends XML file to client.
+ */
 public class Server {
-    public static void startServer(String filePath)throws Exception{
-        ServerSocket serverSocket = new ServerSocket(8085);
-        System.out.println("Server started...");
+    private static final int PORT = 8085;
 
-        Socket socket = serverSocket.accept();
+    /**
+     * Starts server and sends XML file to connected client.
+     *
+     * @param filePath path of XML file to send
+     */
+    public static void startServer(String filePath){
+        try (ServerSocket serverSocket = new ServerSocket(PORT)){
+            System.out.println("Server started on port " + PORT);
+            try (Socket socket= serverSocket.accept();
+                 FileInputStream fileInputStream = new FileInputStream(filePath);
+                 OutputStream outputStream=socket.getOutputStream()){
 
-        FileInputStream fileInputStream= new FileInputStream(filePath);
-        OutputStream outputStream = socket.getOutputStream();
+                fileInputStream.transferTo(outputStream);
 
-        fileInputStream.transferTo(outputStream);
-
-        fileInputStream.close();
-        socket.close();
-        serverSocket.close();
+                System.out.println("File sent successfully.");
+            }
+        }catch (Exception e){
+            throw new RuntimeException("Server failed to send file", e);
+        }
     }
 }

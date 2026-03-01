@@ -3,22 +3,44 @@ package lt.viko.eif.dalencinovic.first.spring.model;
 import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.XmlTransient;
 
+
+/**
+ * Base entity class that provides ID field for all entities.
+ * <p>
+ * This class is intended to be extended by JPA entity classes.
+ */
 @MappedSuperclass
 public class BaseEntity {
+    /**
+     * Primary key identifier.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
-    private int id;
+    private long id;
 
-    public BaseEntity() {
+    /**
+     * Default constructor.
+     */
+    protected BaseEntity() {
     }
 
+    /**
+     * Returns entity identifier.
+     *
+     * @return entity ID
+     */
     @XmlTransient
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    /**
+     * Sets entity identifier.
+     *
+     * @param id entity ID
+     */
+    public void setId(long id) {
         this.id = id;
     }
 }

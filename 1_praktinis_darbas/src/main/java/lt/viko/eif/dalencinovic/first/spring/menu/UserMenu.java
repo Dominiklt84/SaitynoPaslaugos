@@ -2,6 +2,9 @@ package lt.viko.eif.dalencinovic.first.spring.menu;
 
 import lt.viko.eif.dalencinovic.first.spring.db.CarDealershipRepository;
 import lt.viko.eif.dalencinovic.first.spring.model.CarDealership;
+import lt.viko.eif.dalencinovic.first.spring.network.Client;
+import lt.viko.eif.dalencinovic.first.spring.network.Server;
+import lt.viko.eif.dalencinovic.first.spring.service.DTDValidator;
 import lt.viko.eif.dalencinovic.first.spring.service.XMLTransformationService;
 import lt.viko.eif.dalencinovic.first.spring.service.XMLValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +14,19 @@ import java.io.File;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Console menu for interacting with application features.
+ */
 @Component
 public class UserMenu {
-    @Autowired
-    private CarDealershipRepository carDealershipRepository;
-    @Autowired
-    private XMLTransformationService xmlTransformationService;
+    private final CarDealershipRepository carDealershipRepository;
+    private final XMLTransformationService xmlTransformationService;
+    private final XMLValidator xmlValidator;
 
-    public UserMenu(CarDealershipRepository carDealershipRepository, XMLTransformationService xmlTransformationService) {
+    public UserMenu(CarDealershipRepository carDealershipRepository, XMLTransformationService xmlTransformationService, XMLValidator xmlValidator) {
         this.carDealershipRepository = carDealershipRepository;
         this.xmlTransformationService = xmlTransformationService;
+        this.xmlValidator = xmlValidator;
     }
 
     private int displayMenu(Scanner input){
@@ -52,41 +58,42 @@ public class UserMenu {
                     carDealershipRepository.findAll().forEach(System.out::println);
                     break;
                 case 2:
-                    CarDealership carDealership=carDealershipRepository.findAll().get(0);
-                    xmlTransformationService.transformToXML(carDealership, new File("car_dealership.xml"));
+                    var list = carDealershipRepository.findAll();
+                    if(list.isEmpty()){
+                        System.out.println("Database is empty.");
+                    }
+                    xmlTransformationService.transformToXML(list.get(0), new File("src/main/resources/car_dealership.xml"));
                     break;
                 case 3:
-                    try{
-                        XMLValidator.validate(new File("car_dealership.xml"), new File("src/main/resources/carDealership.xsd"));
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
+                    File xml = new File("src/main/resources/car_dealership.xml");
+                    File xsd = new File("src/main/resources/carDealership.xsd");
+
+                    DTDValidator.validate(xml);
+                    xmlValidator.validate(xml, xsd);
                     break;
                 case 4:
-                    CarDealership result = xmlTransformationService.transformToPOJO(new File("received.xml"), new File("src/main/resources/carDealership.xsd"),CarDealership.class);
+                    CarDealership result =
+                            xmlTransformationService.transformToPOJO(
+                                    new File("src/main/resources/car_dealership.xml"),
+                                    new File("src/main/resources/carDealership.xsd"),
+                                    CarDealership.class);
                     System.out.println(result);
                     break;
                 case 5:
-                    new Thread(()->{
-                        try {
-                            lt.viko.eif.dalencinovic.first.spring.network.Server.startServer("car_dealership.xml");
-                        }catch (Exception e){
-                            e. printStackTrace();
-                        }
-                    }).start();
+                    new Thread(() ->
+                            Server.startServer("src/main/resources/car_dealership.xml")).start();
                     break;
                 case 6:
-                    try {
-                        lt.viko.eif.dalencinovic.first.spring.network.Client.startClient("received.xml");
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
+                    Client.startClient("src/main/resources/car_dealership.xml");
                     break;
                 case 7:
                     System.out.println("Thank you and goodbye!");
                     System.exit(0);
                     break;
+                default:
+                    System.out.println("Invalid option.");
+                    break;
             }
-        }while (userChoice!=0);
+        }while (userChoice!=7);
     }
 }

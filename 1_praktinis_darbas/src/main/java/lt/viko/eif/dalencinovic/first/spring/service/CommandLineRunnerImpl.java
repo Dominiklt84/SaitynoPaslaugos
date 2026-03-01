@@ -5,13 +5,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+/**
+ * Executes application logic after Spring Boot starts.
+ */
 @Component
 public class CommandLineRunnerImpl implements CommandLineRunner {
-    @Autowired
-    private UserMenu userMenu;
+    private final UserMenu userMenu;
+
+    public CommandLineRunnerImpl(UserMenu userMenu) {
+        this.userMenu = userMenu;
+    }
 
     @Override
-    public void run(String... args) throws Exception{
+    public void run(String... args){
         userMenu.showMenu();
     }
 }

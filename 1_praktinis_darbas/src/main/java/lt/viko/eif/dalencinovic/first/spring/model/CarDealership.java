@@ -5,6 +5,10 @@ import jakarta.xml.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Represents a car dealership entity.
+ * This class serves as the root XML element for JAXB transformation.
+ */
 @XmlRootElement(name = "carDealership")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
@@ -14,15 +18,21 @@ public class CarDealership extends BaseEntity{
     private int establishedYear;
     private float totalIncome;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "dealership_id")
     @XmlElementWrapper(name="cars")
     @XmlElement(name="car")
     private List<Car> cars;
 
+    /**
+     * Default constructor required by JPA and JAXB.
+     */
     public CarDealership() {
     }
 
+    /**
+     * Constructor for creating dealership instance.
+     */
     public CarDealership(String name, int establishedYear, float totalIncome, List<Car> cars) {
         this.name = name;
         this.establishedYear = establishedYear;
@@ -64,8 +74,10 @@ public class CarDealership extends BaseEntity{
 
     @Override
     public String toString() {
-        return "CarDealership: " +
+        return "CarDealership:" +
                 "\n\tname=" + name +
-                "\n\tcars=" + cars ;
+                "\n\testablishedYear=" + establishedYear +
+                "\n\ttotalIncome=" + totalIncome +
+                "\n\tcars=" + cars;
     }
 }
