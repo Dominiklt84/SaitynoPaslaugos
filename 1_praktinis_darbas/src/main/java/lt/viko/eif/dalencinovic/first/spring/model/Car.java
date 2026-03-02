@@ -14,10 +14,22 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 @Entity
 @Table(name = "car")
 public class Car extends BaseEntity{
+    /**
+     * Car model name.
+     */
     private String model;
+    /**
+     * Manufacturing year of the car.
+     */
     @Column(name="car_year")
     private int year;
+    /**
+     * Car price.
+     */
     private float price;
+    /**
+     * Indicates whether the car is electric.
+     */
     private boolean electric;
 
     /**
@@ -28,6 +40,11 @@ public class Car extends BaseEntity{
 
     /**
      * Constructor for creating car instance.
+     *
+     * @param model    car model
+     * @param year     manufacturing year
+     * @param price    car price
+     * @param electric true if electric
      */
     public Car(String model, int year, float price, boolean electric) {
         this.model = model;

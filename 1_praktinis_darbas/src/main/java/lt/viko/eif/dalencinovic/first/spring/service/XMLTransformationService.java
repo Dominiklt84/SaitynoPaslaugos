@@ -4,8 +4,20 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 import org.springframework.stereotype.Service;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 
+import javax.xml.XMLConstants;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.sax.SAXSource;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.StringWriter;
+import java.nio.file.Files;
 
 /**
  * Service responsible for transforming POJO objects to XML
@@ -26,18 +38,13 @@ public class XMLTransformationService {
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-            java.io.StringWriter writer = new java.io.StringWriter();
+            StringWriter writer = new StringWriter();
             marshaller.marshal(object, writer);
 
             String xmlContent = writer.toString();
 
-            String finalXml =
-                    xmlContent.replaceFirst(
-                            "<\\?xml[^>]*>",
-                            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                                    "<!DOCTYPE carDealership SYSTEM \"carDealership.dtd\">"
-                    );
-            java.nio.file.Files.write(file.toPath(), finalXml.getBytes());
+            String finalXml = xmlContent.replaceFirst("<\\?xml[^>]*>", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + "<!DOCTYPE carDealership SYSTEM \"carDealership.dtd\">");
+            Files.write(file.toPath(), finalXml.getBytes());
 
             System.out.println("\n===== GENERATED XML =====");
             System.out.println(finalXml);
@@ -50,11 +57,12 @@ public class XMLTransformationService {
     }
 
     /**
-     * Transforms XML file to POJO object and validates against XSD schema.
+     * Transforms XML file to POJO object and validates it against XSD schema.
      *
      * @param xmlFile XML file
      * @param xsdFile XSD schema file
-     * @param clazz target class
+     * @param clazz   target class
+     * @param <T>     type of returned object
      * @return transformed POJO object
      */
     public <T> T transformToPOJO(File xmlFile, File xsdFile, Class<T> clazz){
@@ -62,37 +70,23 @@ public class XMLTransformationService {
             JAXBContext jaxbContext=JAXBContext.newInstance(clazz);
             Unmarshaller unmarshaller=jaxbContext.createUnmarshaller();
 
-            // XSD validation
-            javax.xml.validation.SchemaFactory schemaFactory =
-                    javax.xml.validation.SchemaFactory.newInstance(
-                            javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI
-                    );
+            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
-            javax.xml.validation.Schema schema =
-                    schemaFactory.newSchema(xsdFile);
-
+            Schema schema = schemaFactory.newSchema(new StreamSource(xsdFile));
             unmarshaller.setSchema(schema);
 
-            // Create SAX parser that ignores DTD
-            javax.xml.parsers.SAXParserFactory spf =
-                    javax.xml.parsers.SAXParserFactory.newInstance();
+            SAXParserFactory spf = SAXParserFactory.newInstance();
             spf.setNamespaceAware(true);
             spf.setValidating(false);
 
-            javax.xml.parsers.SAXParser saxParser = spf.newSAXParser();
+            SAXParser saxParser = spf.newSAXParser();
+            XMLReader xmlReader = saxParser.getXMLReader();
 
-            org.xml.sax.XMLReader xmlReader = saxParser.getXMLReader();
+            xmlReader.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
 
-            xmlReader.setFeature(
-                    "http://apache.org/xml/features/nonvalidating/load-external-dtd",
-                    false
-            );
+            InputSource inputSource = new InputSource(new FileInputStream(xmlFile));
 
-            org.xml.sax.InputSource inputSource =
-                    new org.xml.sax.InputSource(new java.io.FileInputStream(xmlFile));
-
-            javax.xml.transform.sax.SAXSource source =
-                    new javax.xml.transform.sax.SAXSource(xmlReader, inputSource);
+            SAXSource source = new SAXSource(xmlReader, inputSource);
 
             return clazz.cast(unmarshaller.unmarshal(source));
         }catch (Exception e){

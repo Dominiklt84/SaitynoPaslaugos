@@ -14,10 +14,25 @@ import java.util.List;
 @Entity
 @Table(name = "car_dealership")
 public class CarDealership extends BaseEntity{
+    /**
+     * Dealership name.
+     */
+    @XmlElement(required = true)
     private String name;
+    /**
+     * Year when dealership was established.
+     */
+    @XmlElement
     private int establishedYear;
+    /**
+     * Total income of the dealership.
+     */
+    @XmlElement
     private float totalIncome;
 
+    /**
+     * List of cars belonging to the dealership.
+     */
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "dealership_id")
     @XmlElementWrapper(name="cars")
@@ -32,6 +47,11 @@ public class CarDealership extends BaseEntity{
 
     /**
      * Constructor for creating dealership instance.
+     *
+     * @param name            dealership name
+     * @param establishedYear year established
+     * @param totalIncome     total income
+     * @param cars            list of cars
      */
     public CarDealership(String name, int establishedYear, float totalIncome, List<Car> cars) {
         this.name = name;

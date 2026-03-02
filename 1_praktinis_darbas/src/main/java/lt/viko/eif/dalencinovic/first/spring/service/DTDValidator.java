@@ -9,12 +9,17 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
 /**
- * Service responsible for validating XML file against DTD schema.
+ * Utility class responsible for validating XML file against DTD schema.
  */
 public class DTDValidator {
 
     /**
-     * Validates XML file against internal DTD.
+     * Private constructor to prevent instantiation.
+     */
+    private DTDValidator() {
+    }
+    /**
+     * Validates XML file against DTD defined in DOCTYPE declaration.
      *
      * @param xmlFile XML file to validate
      */

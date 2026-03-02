@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,15 +21,18 @@ class XMLTransformationServiceTest {
     void testMarshallingAndUnmarshalling() throws Exception {
 
         Car car = new Car("Audi", 2021, 55000f, false);
+        car.setId(1L);
         CarDealership dealership =
                 new CarDealership("Test", 2000, 1000000f, List.of(car));
+        dealership.setId(10L);
 
         XMLTransformationService service = new XMLTransformationService();
 
         File tempFile = File.createTempFile("test", ".xml");
-
+        tempFile.deleteOnExit();
         service.transformToXML(dealership, tempFile);
 
+        // Load XSD
         URL resource = getClass().getClassLoader()
                 .getResource("carDealership.xsd");
 
@@ -36,9 +40,11 @@ class XMLTransformationServiceTest {
 
         File xsdFile = new File(resource.toURI());
 
+        // Unmarshal
         CarDealership result =
                 service.transformToPOJO(tempFile, xsdFile, CarDealership.class);
 
+        // Assertions
         assertEquals("Test", result.getName());
         assertEquals(2000, result.getEstablishedYear());
         assertEquals(1000000f, result.getTotalIncome());

@@ -19,11 +19,14 @@ public class Server {
     public static void startServer(String filePath){
         try (ServerSocket serverSocket = new ServerSocket(PORT)){
             System.out.println("Server started on port " + PORT);
+            System.out.println("Waiting for client connection...");
+
             try (Socket socket= serverSocket.accept();
                  FileInputStream fileInputStream = new FileInputStream(filePath);
                  OutputStream outputStream=socket.getOutputStream()){
 
                 fileInputStream.transferTo(outputStream);
+                outputStream.flush();
 
                 System.out.println("File sent successfully.");
             }
