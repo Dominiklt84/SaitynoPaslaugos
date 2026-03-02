@@ -1,9 +1,10 @@
-<!ELEMENT carDealership (name, establishedYear, totalIncome, cars)>
+<!ELEMENT carDealership (id,name, establishedYear, totalIncome, cars)>
+        <!ELEMENT id (#PCDATA)>
         <!ELEMENT name (#PCDATA)>
         <!ELEMENT establishedYear (#PCDATA)>
         <!ELEMENT totalIncome (#PCDATA)>
         <!ELEMENT cars (car+)>
-        <!ELEMENT car (model, year, price, electric)>
+        <!ELEMENT car (id, model, year, price, electric)>
         <!ELEMENT model (#PCDATA)>
         <!ELEMENT year (#PCDATA)>
         <!ELEMENT price (#PCDATA)>

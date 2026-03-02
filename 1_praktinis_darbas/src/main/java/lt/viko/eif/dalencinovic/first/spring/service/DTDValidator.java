@@ -1,6 +1,5 @@
 package lt.viko.eif.dalencinovic.first.spring.service;
 
-
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;

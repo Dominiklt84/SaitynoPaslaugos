@@ -7,11 +7,9 @@ import lt.viko.eif.dalencinovic.first.spring.network.Server;
 import lt.viko.eif.dalencinovic.first.spring.service.DTDValidator;
 import lt.viko.eif.dalencinovic.first.spring.service.XMLTransformationService;
 import lt.viko.eif.dalencinovic.first.spring.service.XMLValidator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -44,8 +42,65 @@ public class UserMenu {
         System.out.printf("| 4) + %10s \n", "Transform XML to POJO");
         System.out.printf("| 5) + %10s \n", "Send XML to Server");
         System.out.printf("| 6) + %10s \n", "Receive XML from Client");
-        System.out.printf("| 7) Quit %7s \n", " ");
+        System.out.printf("| 7) + %10s \n", "Run full");
+        System.out.printf("| 8) Quit %7s \n", " ");
         return input.nextInt();
+    }
+
+    private void runFullWorkflow(){
+        try {
+            System.out.println("\n===== FULL WORKFLOW WITH NETWORK STARTED =====");
+
+            System.out.println("1) Fetching data from database...");
+            CarDealership dealership = carDealershipRepository.findAll().get(0);
+            System.out.println("Data fetched successfully.");
+
+            System.out.println("2) Transforming POJO to XML...");
+            File xmlFile = new File("src/main/resources/car_dealership.xml");
+            xmlTransformationService.transformToXML(dealership, xmlFile);
+
+            System.out.println("3) Validating XML against DTD...");
+            lt.viko.eif.dalencinovic.first.spring.service.DTDValidator
+                    .validate(xmlFile);
+
+            System.out.println("4) Validating XML against XSD...");
+            XMLValidator.validate(
+                    xmlFile,
+                    new File("src/main/resources/carDealership.xsd")
+            );
+
+            System.out.println("5) Starting server...");
+            new Thread(() -> {
+                try {
+                    lt.viko.eif.dalencinovic.first.spring.network.Server
+                            .startServer("src/main/resources/car_dealership.xml");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
+
+            Thread.sleep(1000);
+
+            System.out.println("6) Receiving XML via client...");
+            lt.viko.eif.dalencinovic.first.spring.network.Client
+                    .startClient("src/main/resources/received.xml");
+
+            System.out.println("7) Transforming received XML to POJO...");
+            CarDealership result2 =
+                    xmlTransformationService.transformToPOJO(
+                            new File("src/main/resources/received.xml"),
+                            new File("src/main/resources/carDealership.xsd"),
+                            CarDealership.class
+                    );
+
+            System.out.println("Transformation successful.");
+            System.out.println("\n----- RESULT OBJECT -----");
+            System.out.println(result2);
+
+            System.out.println("===== FULL WORKFLOW FINISHED SUCCESSFULLY =====\n");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void showMenu(){
@@ -87,6 +142,9 @@ public class UserMenu {
                     Client.startClient("src/main/resources/car_dealership.xml");
                     break;
                 case 7:
+                    runFullWorkflow();
+                    break;
+                case 8:
                     System.out.println("Thank you and goodbye!");
                     System.exit(0);
                     break;
@@ -94,6 +152,6 @@ public class UserMenu {
                     System.out.println("Invalid option.");
                     break;
             }
-        }while (userChoice!=7);
+        }while (userChoice!=8);
     }
 }

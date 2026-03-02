@@ -7,6 +7,7 @@
         <xs:complexType>
             <xs:sequence>
 
+                <xs:element name="id" type="xs:long"/>
                 <xs:element name="name" type="xs:string"/>
                 <xs:element name="establishedYear" type="xs:int"/>
                 <xs:element name="totalIncome" type="xs:float"/>
@@ -19,6 +20,7 @@
                                         maxOccurs="unbounded">
                                 <xs:complexType>
                                     <xs:sequence>
+                                        <xs:element name="id" type="xs:long"/>
                                         <xs:element name="model" type="xs:string"/>
                                         <xs:element name="year" type="xs:int"/>
                                         <xs:element name="price" type="xs:float"/>

@@ -1,8 +1,6 @@
 package lt.viko.eif.dalencinovic.first.spring.model;
 
 import jakarta.persistence.*;
-import jakarta.xml.bind.annotation.XmlTransient;
-
 
 /**
  * Base entity class that provides ID field for all entities.
@@ -30,7 +28,6 @@ public class BaseEntity {
      *
      * @return entity ID
      */
-    @XmlTransient
     public long getId() {
         return id;
     }

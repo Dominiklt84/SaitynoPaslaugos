@@ -1,7 +1,6 @@
 package lt.viko.eif.dalencinovic.first.spring.network;
 
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;

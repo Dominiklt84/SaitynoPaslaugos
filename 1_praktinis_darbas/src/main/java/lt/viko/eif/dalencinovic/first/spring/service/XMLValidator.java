@@ -20,7 +20,7 @@ public class XMLValidator {
      * @param xml XML file to validate
      * @param xsd XSD schema file
      */
-    public void validate(File xml, File xsd) {
+    public static void validate(File xml, File xsd) {
         try {
             var schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             var schema = schemaFactory.newSchema(xsd);
@@ -30,7 +30,5 @@ public class XMLValidator {
         }catch (Exception e){
             throw new RuntimeException("XSD validation failed", e);
         }
-
-
     }
 }
