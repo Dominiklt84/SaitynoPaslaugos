@@ -12,9 +12,10 @@ public class Server {
     private static final int PORT = 8085;
 
     /**
-     * Starts server and sends XML file to connected client.
+     * Starts TCP server and sends specified file
+     * to first connected client.
      *
-     * @param filePath path of XML file to send
+     * @param filePath path to XML file
      */
     public static void startServer(String filePath){
         try (ServerSocket serverSocket = new ServerSocket(PORT)){
