@@ -19,7 +19,7 @@ class CarDealershipTest {
         Car car = new Car("BMW", 2022, 60000f, false);
 
         CarDealership dealership =
-                new CarDealership("AutoLux", 2008, 2000000f, List.of(car));
+                new CarDealership("AutoPlius", 2008, 2000000f, List.of(car));
 
         assertEquals("AutoPlius", dealership.getName());
         assertEquals(2008, dealership.getEstablishedYear());
