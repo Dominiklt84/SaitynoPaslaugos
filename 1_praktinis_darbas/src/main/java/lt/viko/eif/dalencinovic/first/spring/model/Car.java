@@ -88,7 +88,7 @@ public class Car extends BaseEntity{
     @Override
     public String toString() {
         return "\n\t\tCar: " +
-                "\n\t\t\tmodel='" + model + '\'' +
+                "\n\t\t\tmodel='" + model +
                 "\n\t\t\t year=" + year +
                 "\n\t\t\t price=" + price +
                 "\n\t\t\t electric=" + electric;

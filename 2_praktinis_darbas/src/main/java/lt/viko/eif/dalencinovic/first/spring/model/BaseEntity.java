@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 
 /**
  * Base entity class that provides ID field for all entities.
- * <p>
- * This class is intended to be extended by JPA entity classes.
  */
 @MappedSuperclass
 public class BaseEntity {
