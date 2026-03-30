@@ -1,0 +1,11 @@
+id;name;location;open;rating
+1;Food Palace;Vilnius;true;4.5
+2;Burger House;Kaunas;true;4.2
+3;Pizza Spot;Klaipeda;false;4.0
+4;Sushi Bar;Vilnius;true;4.8
+5;Grill House;Kaunas;true;4.3
+6;Healthy Food;Vilnius;true;4.6
+7;Steak Zone;Klaipeda;false;4.1
+8;Fast Bites;Panevezys;true;3.9
+9;Veggie Place;Vilnius;true;4.7
+10;BBQ Corner;Siauliai;true;4.2

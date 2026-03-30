@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/db.changelog-restaurant.xml
+  - include:
+      file: db/changelog/db.changelog-item.xml
+  - include:
+      file: db/changelog/db.changelog-customer.xml
+  - include:
+      file: db/changelog/db.changelog-orders.xml

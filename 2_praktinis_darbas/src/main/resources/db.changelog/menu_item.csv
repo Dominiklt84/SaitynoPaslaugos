@@ -1,0 +1,11 @@
+id;name;price;available;restaurant_id
+1;Burger;5.99;true;1
+2;Pizza;8.50;true;1
+3;Salad;4.20;true;1
+4;Fries;2.99;true;2
+5;Cheeseburger;6.50;true;2
+6;Double Burger;7.99;true;2
+7;Pepperoni Pizza;9.99;false;3
+8;Veggie Pizza;8.80;true;3
+9;Sushi Roll;12.50;true;4
+10;Steak;15.99;true;5
