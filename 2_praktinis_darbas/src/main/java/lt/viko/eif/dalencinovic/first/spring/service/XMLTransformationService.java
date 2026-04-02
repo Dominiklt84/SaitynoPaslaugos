@@ -3,6 +3,10 @@ package lt.viko.eif.dalencinovic.first.spring.service;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
+import org.apache.fop.apps.FOUserAgent;
+import org.apache.fop.apps.Fop;
+import org.apache.fop.apps.FopFactory;
+import org.apache.fop.apps.MimeConstants;
 import org.springframework.stereotype.Service;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
@@ -10,16 +14,17 @@ import org.xml.sax.XMLReader;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.StringWriter;
+import java.io.*;
 import java.nio.file.Files;
 
 /**
@@ -93,6 +98,38 @@ public class XMLTransformationService {
             System.out.println("HTML generated");
         }catch (Exception e){
             throw new RuntimeException("HTML transform failed",e);
+        }
+    }
+
+    public void transformToPDF(File xml, File xsl, File pdf){
+        try {
+            FopFactory fopFactory = FopFactory.newInstance(new File(".").toURI());
+            OutputStream out = new FileOutputStream(pdf);
+
+            FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
+
+            Fop fop=fopFactory.newFop(MimeConstants.MIME_PDF,foUserAgent, out);
+
+            TransformerFactory factory = TransformerFactory.newInstance();
+            Transformer transformer=factory.newTransformer(new StreamSource(xsl));
+
+            Source src=new StreamSource(xml);
+            Result res = new SAXResult(fop.getDefaultHandler());
+
+            transformer.transform(src,res);
+
+            out.close();
+
+            System.out.println("PDF generated");
+
+        }catch (Exception e){
+            throw new RuntimeException("PDF transform failed",e);
+        }
+    }
+
+    private void runFullWorkflow(){
+        try {
+            System.out.println();
         }
     }
 
