@@ -49,7 +49,7 @@ public class UserMenu {
         System.out.printf("| 1) + %10s \n", "Fetch data from DB ");
         System.out.printf("| 2) + %10s \n", "Transform to XML");
         System.out.printf("| 3) + %10s \n", "Validate XML (DTD+XSD)");
-        System.out.printf("| 4) + %10s \n", "Transform XML to POJO");
+        System.out.printf("| 4) + %10s \n", "Transform XML to POJO" );
         System.out.printf("| 5) + %10s \n", "Start Server (send XML)");
         System.out.printf("| 6) + %10s \n", "Start Client (receive XML)");
         System.out.printf("| 7) + %10s \n", "Run full workflow");

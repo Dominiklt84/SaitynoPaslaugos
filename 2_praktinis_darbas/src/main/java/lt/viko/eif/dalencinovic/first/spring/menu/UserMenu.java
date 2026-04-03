@@ -1,10 +1,15 @@
 package lt.viko.eif.dalencinovic.first.spring.menu;
 
 import lt.viko.eif.dalencinovic.first.spring.db.RestaurantRepository;
+import lt.viko.eif.dalencinovic.first.spring.model.Restaurant;
+import lt.viko.eif.dalencinovic.first.spring.model.RestaurantList;
+import lt.viko.eif.dalencinovic.first.spring.service.DTDValidator;
 import lt.viko.eif.dalencinovic.first.spring.service.XMLTransformationService;
 import lt.viko.eif.dalencinovic.first.spring.service.XMLValidator;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
+import java.util.List;
 import java.util.Scanner;
 
 @Component
@@ -40,6 +45,128 @@ public class UserMenu {
         System.out.printf("| 7) + %10s \n", "Run full workflow");
         System.out.printf("| 8) Quit %7s \n", " ");
         return input.nextInt();
+    }
 
+    private void runFullWorkflow() {
+        try {
+            System.out.println("\n===== FULL WORKFLOW =====");
+
+            List<Restaurant> list = restaurantRepository.findAll();
+            if (list.isEmpty()) {
+                System.out.println("Database is empty.");
+                return;
+            }
+
+            Restaurant restaurant = list.get(0);
+            System.out.println("Data fetched from DB.");
+
+            File xmlFile = new File(XML_PATH);
+            xmlTransformationService.transformToXML(restaurant, xmlFile);
+
+            DTDValidator.validate(xmlFile);
+
+            xmlValidator.validate(xmlFile, new File(XSD_PATH));
+
+            xmlTransformationService.transformToHTML(
+                    xmlFile,
+                    new File("src/main/resources/xsl/restaurant.xsl"),
+                    new File("output.html")
+            );
+
+            xmlTransformationService.transformToPDF(
+                    xmlFile,
+                    new File("src/main/resources/xsl/restaurant-fo.xsl"),
+                    new File("output.pdf")
+            );
+
+            Restaurant result =
+                    xmlTransformationService.transformToPOJO(
+                            xmlFile,
+                            new File(XSD_PATH),
+                            Restaurant.class
+                    );
+
+            System.out.println("Result object:");
+            System.out.println(result);
+
+            System.out.println("===== DONE =====\n");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showMenu() {
+        Scanner input = new Scanner(System.in);
+        int choice;
+
+        do {
+            choice = displayMenu(input);
+
+            switch (choice) {
+                case 1:
+                    restaurantRepository.findAll().forEach(System.out::println);
+                    break;
+
+                case 2:
+                    List<Restaurant> list = restaurantRepository.findAll();
+                    if (list.isEmpty()) {
+                        System.out.println("Database is empty.");
+                        break;
+                    }
+
+                    File xmlFile = new File(XML_PATH);
+                    RestaurantList wrapper = new RestaurantList(list);
+                    xmlTransformationService.transformToXML(wrapper, xmlFile);
+                    break;
+
+                case 3:
+                    File xml = new File(XML_PATH);
+                    File xsd = new File(XSD_PATH);
+
+                    DTDValidator.validate(xml);
+                    xmlValidator.validate(xml, xsd);
+                    break;
+
+                case 4:
+                    Restaurant result =
+                            xmlTransformationService.transformToPOJO(
+                                    new File(XML_PATH),
+                                    new File(XSD_PATH),
+                                    Restaurant.class
+                            );
+                    System.out.println(result);
+                    break;
+
+                case 5:
+                    xmlTransformationService.transformToHTML(
+                            new File(XML_PATH),
+                            new File("src/main/resources/xsl/restaurant.xsl"),
+                            new File("output.html")
+                    );
+                    break;
+
+                case 6:
+                    xmlTransformationService.transformToPDF(
+                            new File(XML_PATH),
+                            new File("src/main/resources/xsl/restaurant-fo.xsl"),
+                            new File("output.pdf")
+                    );
+                    break;
+
+                case 7:
+                    runFullWorkflow();
+                    break;
+
+                case 8:
+                    System.out.println("Bye!");
+                    System.exit(0);
+                    break;
+
+                default:
+                    System.out.println("Invalid option.");
+            }
+
+        } while (choice != 8);
     }
 }

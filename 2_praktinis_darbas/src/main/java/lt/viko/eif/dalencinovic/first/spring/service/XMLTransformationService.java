@@ -3,23 +3,19 @@ package lt.viko.eif.dalencinovic.first.spring.service;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
+import lt.viko.eif.dalencinovic.first.spring.model.RestaurantList;
 import org.apache.fop.apps.FOUserAgent;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
 import org.springframework.stereotype.Service;
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
 
 import javax.xml.XMLConstants;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.sax.SAXResult;
-import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
@@ -42,7 +38,7 @@ public class XMLTransformationService {
      */
     public void transformToXML(Object object, File file){
         try {
-            JAXBContext jaxbContext=JAXBContext.newInstance(object.getClass());
+            JAXBContext jaxbContext = JAXBContext.newInstance(object.getClass(), RestaurantList.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
@@ -126,11 +122,4 @@ public class XMLTransformationService {
             throw new RuntimeException("PDF transform failed",e);
         }
     }
-
-    private void runFullWorkflow(){
-        try {
-            System.out.println();
-        }
-    }
-
 }

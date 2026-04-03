@@ -4,7 +4,7 @@ import lt.viko.eif.dalencinovic.first.spring.model.MenuItem;
 import lt.viko.eif.dalencinovic.first.spring.model.Order;
 import lt.viko.eif.dalencinovic.first.spring.model.Restaurant;
 
-import javax.jws.WebService;
+import jakarta.jws.WebService;
 import java.util.ArrayList;
 import java.util.List;
 

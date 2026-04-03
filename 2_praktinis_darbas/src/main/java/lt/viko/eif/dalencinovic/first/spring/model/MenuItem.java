@@ -7,10 +7,10 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="menuItem")
+@XmlRootElement(name="menu_item")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
-@Table(name="item")
+@Table(name="menu_item")
 public class MenuItem extends BaseEntity{
     @XmlElement(required = true)
     private String name;

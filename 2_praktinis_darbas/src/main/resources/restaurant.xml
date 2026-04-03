@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE carDealership SYSTEM "restaurant.dtd">
+<restaurants>
+    <restaurant>
+        <id>1</id>
+        <name>Food Palace</name>
+        <location>Vilnius</location>
+        <open>true</open>
+        <rating>4.5</rating>
+        <menu>
+            <item>
+                <id>1</id>
+                <name>Burger</name>
+                <price>5.99</price>
+                <available>true</available>
+            </item>
+            <item>
+                <id>2</id>
+                <name>Pizza</name>
+                <price>8.5</price>
+                <available>true</available>
+            </item>
+            <item>
+                <id>3</id>
+                <name>Salad</name>
+                <price>4.2</price>
+                <available>true</available>
+            </item>
+        </menu>
+    </restaurant>
+    <restaurant>
+        <id>2</id>
+        <name>Burger House</name>
+        <location>Kaunas</location>
+        <open>true</open>
+        <rating>4.2</rating>
+        <menu>
+            <item>
+                <id>4</id>
+                <name>Fries</name>
+                <price>2.99</price>
+                <available>true</available>
+            </item>
+            <item>
+                <id>5</id>
+                <name>Cheeseburger</name>
+                <price>6.5</price>
+                <available>true</available>
+            </item>
+            <item>
+                <id>6</id>
+                <name>Double Burger</name>
+                <price>7.99</price>
+                <available>true</available>
+            </item>
+        </menu>
+    </restaurant>
+    <restaurant>
+        <id>3</id>
+        <name>Pizza Spot</name>
+        <location>Klaipeda</location>
+        <open>false</open>
+        <rating>4.0</rating>
+        <menu>
+            <item>
+                <id>7</id>
+                <name>Pepperoni Pizza</name>
+                <price>9.99</price>
+                <available>false</available>
+            </item>
+            <item>
+                <id>8</id>
+                <name>Veggie Pizza</name>
+                <price>8.8</price>
+                <available>true</available>
+            </item>
+        </menu>
+    </restaurant>
+    <restaurant>
+        <id>4</id>
+        <name>Sushi Bar</name>
+        <location>Vilnius</location>
+        <open>true</open>
+        <rating>4.8</rating>
+        <menu>
+            <item>
+                <id>9</id>
+                <name>Sushi Roll</name>
+                <price>12.5</price>
+                <available>true</available>
+            </item>
+        </menu>
+    </restaurant>
+    <restaurant>
+        <id>5</id>
+        <name>Grill House</name>
+        <location>Kaunas</location>
+        <open>true</open>
+        <rating>4.3</rating>
+        <menu>
+            <item>
+                <id>10</id>
+                <name>Steak</name>
+                <price>15.99</price>
+                <available>true</available>
+            </item>
+        </menu>
+    </restaurant>
+    <restaurant>
+        <id>6</id>
+        <name>Healthy Food</name>
+        <location>Vilnius</location>
+        <open>true</open>
+        <rating>4.6</rating>
+        <menu/>
+    </restaurant>
+    <restaurant>
+        <id>7</id>
+        <name>Steak Zone</name>
+        <location>Klaipeda</location>
+        <open>false</open>
+        <rating>4.1</rating>
+        <menu/>
+    </restaurant>
+    <restaurant>
+        <id>8</id>
+        <name>Fast Bites</name>
+        <location>Panevezys</location>
+        <open>true</open>
+        <rating>3.9</rating>
+        <menu/>
+    </restaurant>
+    <restaurant>
+        <id>9</id>
+        <name>Veggie Place</name>
+        <location>Vilnius</location>
+        <open>true</open>
+        <rating>4.7</rating>
+        <menu/>
+    </restaurant>
+    <restaurant>
+        <id>10</id>
+        <name>BBQ Corner</name>
+        <location>Siauliai</location>
+        <open>true</open>
+        <rating>4.2</rating>
+        <menu/>
+    </restaurant>
+</restaurants>
