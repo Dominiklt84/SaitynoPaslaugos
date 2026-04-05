@@ -17,7 +17,7 @@
                             <xs:element name="menu">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="item" maxOccurs="unbounded">
+                                        <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
                                             <xs:complexType>
                                                 <xs:sequence>
                                                     <xs:element name="id" type="xs:long"/>

@@ -69,14 +69,14 @@ public class UserMenu {
 
             xmlTransformationService.transformToHTML(
                     xmlFile,
-                    new File("src/main/resources/xsl/restaurant.xsl"),
-                    new File("output.html")
+                    new File("src/main/resources/restaurant.xsl"),
+                    new File("restaurant2.html")
             );
 
             xmlTransformationService.transformToPDF(
                     xmlFile,
-                    new File("src/main/resources/xsl/restaurant-fo.xsl"),
-                    new File("output.pdf")
+                    new File("src/main/resources/restaurant-fo.xsl"),
+                    new File("restaurant2.pdf")
             );
 
             Restaurant result =
@@ -142,7 +142,7 @@ public class UserMenu {
                     xmlTransformationService.transformToHTML(
                             new File(XML_PATH),
                             new File("src/main/resources/restaurant-to-html.xsl"),
-                            new File("output.html")
+                            new File("restaurant1.html")
                     );
                     break;
 
@@ -150,7 +150,7 @@ public class UserMenu {
                     xmlTransformationService.transformToPDF(
                             new File(XML_PATH),
                             new File("src/main/resources/restaurant-to-pdf.xsl"),
-                            new File("output.pdf")
+                            new File("restaurant1.pdf")
                     );
                     break;
 

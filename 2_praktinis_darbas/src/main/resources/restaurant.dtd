@@ -5,7 +5,7 @@
         <!ELEMENT location (#PCDATA)>
         <!ELEMENT open (#PCDATA)>
         <!ELEMENT rating (#PCDATA)>
-        <!ELEMENT menu (item+)>
+        <!ELEMENT menu (item*)>
         <!ELEMENT item (id, name, price, available)>
         <!ELEMENT price (#PCDATA)>
         <!ELEMENT available (#PCDATA)>

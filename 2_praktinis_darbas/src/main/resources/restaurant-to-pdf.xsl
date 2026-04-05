@@ -8,7 +8,7 @@
     <xsl:template match="/">
 
         <fo:root>
-            
+
             <!-- LAYOUT -->
             <fo:layout-master-set>
                 <fo:simple-page-master master-name="A4"
@@ -51,11 +51,11 @@
                         <!-- HEADER -->
                         <fo:table-header>
                             <fo:table-row background-color="#eeeeee">
-                                <fo:table-cell border="0.5pt solid black" padding="3pt"><fo:block>Name</fo:block></fo:table-cell>
-                                <fo:table-cell border="0.5pt solid black" padding="3pt"><fo:block>Location</fo:block></fo:table-cell>
-                                <fo:table-cell border="0.5pt solid black" padding="3pt"><fo:block>Rating</fo:block></fo:table-cell>
-                                <fo:table-cell border="0.5pt solid black" padding="3pt"><fo:block>Status</fo:block></fo:table-cell>
-                                <fo:table-cell border="0.5pt solid black" padding="3pt"><fo:block>Menu</fo:block></fo:table-cell>
+                                <fo:table-cell border="0.5pt solid black" padding="3pt"><fo:block text-align="center" font-weight="bold">Name</fo:block></fo:table-cell>
+                                <fo:table-cell border="0.5pt solid black" padding="3pt"><fo:block text-align="center" font-weight="bold">Location</fo:block></fo:table-cell>
+                                <fo:table-cell border="0.5pt solid black" padding="3pt"><fo:block text-align="center" font-weight="bold">Rating</fo:block></fo:table-cell>
+                                <fo:table-cell border="0.5pt solid black" padding="3pt"><fo:block text-align="center" font-weight="bold">Status</fo:block></fo:table-cell>
+                                <fo:table-cell border="0.5pt solid black" padding="3pt"><fo:block text-align="center" font-weight="bold">Menu</fo:block></fo:table-cell>
                             </fo:table-row>
                         </fo:table-header>
 

@@ -47,7 +47,7 @@ public class XMLTransformationService {
 
             String xmlContent = writer.toString();
 
-            String finalXml = xmlContent.replaceFirst("<\\?xml[^>]*>", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + "<!DOCTYPE carDealership SYSTEM \"restaurant.dtd\">");
+            String finalXml = xmlContent.replaceFirst("<\\?xml[^>]*>", "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + "<!DOCTYPE restaurants SYSTEM \"restaurant.dtd\">");
             Files.write(file.toPath(), finalXml.getBytes());
 
             System.out.println("\n===== GENERATED XML =====");
