@@ -141,7 +141,7 @@ public class UserMenu {
                 case 5:
                     xmlTransformationService.transformToHTML(
                             new File(XML_PATH),
-                            new File("src/main/resources/xsl/restaurant.xsl"),
+                            new File("src/main/resources/restaurant-to-html.xsl"),
                             new File("output.html")
                     );
                     break;
@@ -149,7 +149,7 @@ public class UserMenu {
                 case 6:
                     xmlTransformationService.transformToPDF(
                             new File(XML_PATH),
-                            new File("src/main/resources/xsl/restaurant-fo.xsl"),
+                            new File("src/main/resources/restaurant-to-pdf.xsl"),
                             new File("output.pdf")
                     );
                     break;
@@ -159,7 +159,7 @@ public class UserMenu {
                     break;
 
                 case 8:
-                    System.out.println("Bye!");
+                    System.out.println("Thank you and goodbye!");
                     System.exit(0);
                     break;
 

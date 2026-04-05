@@ -1,0 +1,11 @@
+<!ELEMENT restaurants (restaurant+)>
+        <!ELEMENT restaurant (id, name, location, open, rating, menu)>
+        <!ELEMENT id (#PCDATA)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT location (#PCDATA)>
+        <!ELEMENT open (#PCDATA)>
+        <!ELEMENT rating (#PCDATA)>
+        <!ELEMENT menu (item+)>
+        <!ELEMENT item (id, name, price, available)>
+        <!ELEMENT price (#PCDATA)>
+        <!ELEMENT available (#PCDATA)>
