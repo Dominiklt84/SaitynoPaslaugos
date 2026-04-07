@@ -1,7 +1,6 @@
 package lt.viko.eif.dalencinovic.first.spring.service;
 
 import lt.viko.eif.dalencinovic.first.spring.model.MenuItem;
-import lt.viko.eif.dalencinovic.first.spring.model.Order;
 import lt.viko.eif.dalencinovic.first.spring.model.Restaurant;
 
 import jakarta.jws.WebMethod;
@@ -32,22 +31,5 @@ public interface RestaurantWebService {
      */
     @WebMethod
     List<MenuItem> getMenu(Long restaurantId);
-
-    /**
-     * Creates a new order.
-     *
-     * @param order order to create
-     * @return created order
-     */
-    @WebMethod
-    Order createOrder(Order order);
-
-    /**
-     * Returns all created orders.
-     *
-     * @return list of orders
-     */
-    @WebMethod
-    List<Order> getOrders();
 
 }

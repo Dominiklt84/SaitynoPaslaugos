@@ -26,7 +26,7 @@
 
                 <!-- HEADER -->
                 <fo:static-content flow-name="xsl-region-before">
-                    <fo:block text-align="center" font-size="16pt" font-weight="bold">
+                    <fo:block text-align="center" font-size="16pt" font-family="Helvetica" font-weight="bold">
                         RESTAURANT REPORT
                     </fo:block>
                 </fo:static-content>
@@ -51,11 +51,11 @@
                         <!-- HEADER -->
                         <fo:table-header>
                             <fo:table-row background-color="#eeeeee">
-                                <fo:table-cell border="0.5pt solid black" padding="3pt"><fo:block text-align="center" font-weight="bold">Name</fo:block></fo:table-cell>
-                                <fo:table-cell border="0.5pt solid black" padding="3pt"><fo:block text-align="center" font-weight="bold">Location</fo:block></fo:table-cell>
-                                <fo:table-cell border="0.5pt solid black" padding="3pt"><fo:block text-align="center" font-weight="bold">Rating</fo:block></fo:table-cell>
-                                <fo:table-cell border="0.5pt solid black" padding="3pt"><fo:block text-align="center" font-weight="bold">Status</fo:block></fo:table-cell>
-                                <fo:table-cell border="0.5pt solid black" padding="3pt"><fo:block text-align="center" font-weight="bold">Menu</fo:block></fo:table-cell>
+                                <fo:table-cell border="0.5pt solid black" padding="4pt"><fo:block text-align="center" font-weight="bold">Name</fo:block></fo:table-cell>
+                                <fo:table-cell border="0.5pt solid black" padding="4pt"><fo:block text-align="center" font-weight="bold">Location</fo:block></fo:table-cell>
+                                <fo:table-cell border="0.5pt solid black" padding="4pt"><fo:block text-align="center" font-weight="bold">Rating</fo:block></fo:table-cell>
+                                <fo:table-cell border="0.5pt solid black" padding="4pt"><fo:block text-align="center" font-weight="bold">Status</fo:block></fo:table-cell>
+                                <fo:table-cell border="0.5pt solid black" padding="4pt"><fo:block text-align="center" font-weight="bold">Menu</fo:block></fo:table-cell>
                             </fo:table-row>
                         </fo:table-header>
 
@@ -67,14 +67,14 @@
                                 <fo:table-row>
 
                                     <!-- NAME -->
-                                    <fo:table-cell border="0.5pt solid black" padding="3pt">
+                                    <fo:table-cell border="0.5pt solid black" padding="4pt">
                                         <fo:block>
                                             <xsl:value-of select="name"/>
                                         </fo:block>
                                     </fo:table-cell>
 
                                     <!-- LOCATION -->
-                                    <fo:table-cell border="0.5pt solid black" padding="3pt">
+                                    <fo:table-cell border="0.5pt solid black" padding="4pt">
                                         <fo:block>
                                             <fo:external-graphic src="url('classpath:/images/city.svg')" content-width="6mm"/>
                                             <fo:inline>
@@ -84,8 +84,8 @@
                                         </fo:block>
                                     </fo:table-cell>
 
-                                    <!-- RATING WITH STARS -->
-                                    <fo:table-cell border="0.5pt solid black" padding="3pt">
+                                    <!-- RATING -->
+                                    <fo:table-cell border="0.5pt solid black" padding="4pt">
                                         <fo:block>
                                             <fo:external-graphic src="url('classpath:/images/star.svg')" content-width="5mm"/>
                                             <fo:inline>
@@ -96,7 +96,7 @@
                                     </fo:table-cell>
 
                                     <!-- STATUS -->
-                                    <fo:table-cell border="0.5pt solid black" padding="3pt">
+                                    <fo:table-cell border="0.5pt solid black" padding="4pt">
                                         <fo:block>
                                             <xsl:choose>
                                                 <xsl:when test="open='true'">
@@ -112,7 +112,7 @@
                                     </fo:table-cell>
 
                                     <!-- MENU -->
-                                    <fo:table-cell border="0.5pt solid black" padding="3pt">
+                                    <fo:table-cell border="0.5pt solid black" padding="4pt">
                                         <fo:block>
 
                                             <xsl:choose>

@@ -83,7 +83,7 @@
                                 <xsl:value-of select="name"/>
                             </td>
 
-                            <!-- LOCATION + ICON -->
+                            <!-- LOCATION -->
                             <td>
                                 <img class="icon" src="images/city.svg"/>
                                 <xsl:text> </xsl:text>

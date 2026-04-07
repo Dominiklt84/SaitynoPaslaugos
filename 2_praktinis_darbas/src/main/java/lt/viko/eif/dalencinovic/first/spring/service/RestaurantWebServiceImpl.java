@@ -2,14 +2,12 @@ package lt.viko.eif.dalencinovic.first.spring.service;
 
 import lt.viko.eif.dalencinovic.first.spring.db.RestaurantRepository;
 import lt.viko.eif.dalencinovic.first.spring.model.MenuItem;
-import lt.viko.eif.dalencinovic.first.spring.model.Order;
 import lt.viko.eif.dalencinovic.first.spring.model.Restaurant;
 
 import jakarta.jws.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,11 +25,6 @@ public class RestaurantWebServiceImpl implements RestaurantWebService{
     private RestaurantRepository restaurantRepository;
 
     /**
-     * Stores created orders in memory.
-     */
-    private static List<Order> orders=new ArrayList<>();
-
-    /**
      * Retrieves restaurant from database.
      */
     @Override
@@ -43,16 +36,5 @@ public class RestaurantWebServiceImpl implements RestaurantWebService{
     public List<MenuItem> getMenu(Long restaurantId) {
         Restaurant restaurant=getRestaurant(restaurantId);
         return restaurant!=null ? restaurant.getMenu():null;
-    }
-
-    @Override
-    public Order createOrder(Order order) {
-        orders.add(order);
-        return order;
-    }
-
-    @Override
-    public List<Order> getOrders() {
-        return orders;
     }
 }
