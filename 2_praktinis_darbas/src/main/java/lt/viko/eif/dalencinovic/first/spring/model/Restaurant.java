@@ -5,6 +5,10 @@ import jakarta.xml.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Entity representing a restaurant.
+ * Contains general information and list of menu items.
+ */
 @XmlRootElement(name="restaurant")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity

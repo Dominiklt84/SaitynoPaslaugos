@@ -9,8 +9,9 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
-import java.util.List;
-
+/**
+ * Entity representing a customer order.
+ */
 @XmlRootElement(name = "order")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity

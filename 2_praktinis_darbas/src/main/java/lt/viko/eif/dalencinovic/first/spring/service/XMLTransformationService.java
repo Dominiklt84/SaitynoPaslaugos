@@ -28,8 +28,9 @@ import java.io.*;
 import java.nio.file.Files;
 
 /**
- * Service responsible for transforming POJO objects to XML
- * and transforming XML back to POJO using JAXB.
+ * Service responsible for transforming Java objects to XML
+ * and XML back to Java objects.
+ * Also provides transformation to HTML and PDF formats.
  */
 @Service
 public class XMLTransformationService {
@@ -95,6 +96,13 @@ public class XMLTransformationService {
         }
     }
 
+    /**
+     * Transforms XML into HTML using XSL.
+     *
+     * @param xml source XML
+     * @param xsl XSL stylesheet
+     * @param output HTML file
+     */
     public void transformToHTML(File xml, File xsl, File output){
         try {
             TransformerFactory factory =TransformerFactory.newInstance();
@@ -107,6 +115,13 @@ public class XMLTransformationService {
         }
     }
 
+    /**
+     * Transforms XML into PDF using XSL-FO.
+     *
+     * @param xml source XML
+     * @param xsl FO stylesheet
+     * @param pdf output PDF file
+     */
     public void transformToPDF(File xml, File xsl, File pdf){
         try {
             FopFactory fopFactory = FopFactory.newInstance(new File(".").toURI());

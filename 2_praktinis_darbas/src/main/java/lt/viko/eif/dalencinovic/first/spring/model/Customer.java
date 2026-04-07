@@ -7,12 +7,16 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
+/**
+ * Represents a customer entity in the restaurant.
+ * This class is used both as JPA entity and JAXB XML element.
+ */
 @XmlRootElement(name="customer")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name="customer")
 public class Customer extends BaseEntity {
-    @XmlElement(required = true)
+    @XmlElement
     private String name;
     @XmlElement
     private String email;

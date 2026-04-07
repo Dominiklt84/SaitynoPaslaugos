@@ -7,6 +7,10 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
+/**
+ * Console-based menu for interacting with the system.
+ * Allows user to execute XML transformations and database operations.
+ */
 @XmlRootElement(name="menu_item")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity

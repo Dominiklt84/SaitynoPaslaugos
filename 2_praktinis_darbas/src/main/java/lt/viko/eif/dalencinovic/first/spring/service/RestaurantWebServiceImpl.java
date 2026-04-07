@@ -12,14 +12,28 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of Restaurant SOAP Web Service.
+ * Uses database repository to retrieve restaurant data.
+ */
 @Service
 @WebService(endpointInterface = "lt.viko.eif.dalencinovic.first.spring.service.RestaurantWebService")
 public class RestaurantWebServiceImpl implements RestaurantWebService{
+
+    /**
+     * Repository for accessing restaurant data from database.
+     */
     @Autowired
     private RestaurantRepository restaurantRepository;
 
+    /**
+     * Stores created orders in memory.
+     */
     private static List<Order> orders=new ArrayList<>();
 
+    /**
+     * Retrieves restaurant from database.
+     */
     @Override
     public Restaurant getRestaurant(Long id) {
         return restaurantRepository.findById(id).orElse(null);

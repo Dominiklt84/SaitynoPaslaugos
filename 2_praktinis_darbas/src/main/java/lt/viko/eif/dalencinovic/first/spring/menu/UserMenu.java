@@ -12,6 +12,11 @@ import java.io.File;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Console menu for interacting with application features.
+ * Allows database fetch, XML transformation, validation,
+ * and network transmission of XML file.
+ */
 @Component
 public class UserMenu {
     private final RestaurantRepository restaurantRepository;
@@ -27,6 +32,9 @@ public class UserMenu {
         this.xmlValidator = xmlValidator;
     }
 
+    /**
+     * Displays menu and returns user selection.
+     */
     private int displayMenu(Scanner input) {
         System.out.println(" \n" +
                 "██    ██ ███████ ███████ ██████      ███    ███ ███████ ███    ██ ██    ██\n" +
@@ -47,10 +55,15 @@ public class UserMenu {
         return input.nextInt();
     }
 
+    /**
+     * Executes full workflow:
+     * DB → XML → Unmarshal-> DTD → XSD → HTML → PDF.
+     */
     private void runFullWorkflow() {
         try {
             System.out.println("\n===== FULL WORKFLOW STARTED=====");
 
+            // 1. Fetch from DB
             System.out.println("1) Fetching data from database...");
             List<Restaurant> list = restaurantRepository.findAll();
             if (list.isEmpty()) {
@@ -59,11 +72,14 @@ public class UserMenu {
             }
             System.out.println("Data fetched from DB.");
 
+            // 2. Transform to XML
             System.out.println("2) Transforming POJO to XML...");
             File xmlFile = new File(XML_PATH);
             RestaurantList wrapper = new RestaurantList(list);
 
             xmlTransformationService.transformToXML(wrapper, xmlFile);
+
+            // 3. Transform to POJO
             RestaurantList result =
                     xmlTransformationService.transformToPOJO(
                             xmlFile,
@@ -73,12 +89,15 @@ public class UserMenu {
             System.out.println("3) Transforming XML to POJO");
             result.getRestaurants().forEach(System.out::println);
 
+            // 4. Validate against DTD
             System.out.println("4) Validating XML against DTD...");
             DTDValidator.validate(xmlFile);
 
+            // 5. Validate against XSD
             System.out.println("5) Validating XML against XSD...");
             xmlValidator.validate(xmlFile, new File(XSD_PATH));
 
+            // 6. Transform to HTML
             System.out.println("6) Transforming XML to HTML");
             xmlTransformationService.transformToHTML(
                     xmlFile,
@@ -86,6 +105,7 @@ public class UserMenu {
                     new File("restaurant2.html")
             );
 
+            // 7. Transform to PDF
             System.out.println("7) Transforming XML to PDF");
             xmlTransformationService.transformToPDF(
                     xmlFile,
@@ -100,6 +120,9 @@ public class UserMenu {
         }
     }
 
+    /**
+     * Starts interactive console menu.
+     */
     public void showMenu() {
         Scanner input = new Scanner(System.in);
         int choice;
