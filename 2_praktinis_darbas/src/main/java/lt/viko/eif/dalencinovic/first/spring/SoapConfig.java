@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SoapConfig {
     @Bean
-    public Endpoint endpoint(){
-        return Endpoint.publish("http://localhost:8081/ws/restaurant",new RestaurantWebServiceImpl());
+    public Endpoint endpoint(RestaurantWebServiceImpl service) {
+        return Endpoint.publish("http://localhost:8090/ws/restaurant", service);
     }
 }

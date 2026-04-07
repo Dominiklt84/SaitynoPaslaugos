@@ -19,7 +19,7 @@ public class UserMenu {
     private final XMLValidator xmlValidator;
 
     private static final String XML_PATH = "src/main/resources/restaurant.xml";
-    private static final String XSD_PATH="src/main/resources/restaurant.xsd";
+    private static final String XSD_PATH = "src/main/resources/restaurant.xsd";
 
     public UserMenu(RestaurantRepository restaurantRepository, XMLTransformationService xmlTransformationService, XMLValidator xmlValidator) {
         this.restaurantRepository = restaurantRepository;
@@ -27,12 +27,12 @@ public class UserMenu {
         this.xmlValidator = xmlValidator;
     }
 
-    private int displayMenu(Scanner input){
-        System.out.println(" \n"+
-                "██    ██ ███████ ███████ ██████      ███    ███ ███████ ███    ██ ██    ██\n"+
-                "██    ██ ██      ██      ██   ██     ████  ████ ██      ████   ██ ██    ██\n"+
-                "██    ██ ███████ █████   ██████      ██ ████ ██ █████   ██ ██  ██ ██    ██\n"+
-                "██    ██      ██ ██      ██   ██     ██  ██  ██ ██      ██  ██ ██ ██    ██\n"+
+    private int displayMenu(Scanner input) {
+        System.out.println(" \n" +
+                "██    ██ ███████ ███████ ██████      ███    ███ ███████ ███    ██ ██    ██\n" +
+                "██    ██ ██      ██      ██   ██     ████  ████ ██      ████   ██ ██    ██\n" +
+                "██    ██ ███████ █████   ██████      ██ ████ ██ █████   ██ ██  ██ ██    ██\n" +
+                "██    ██      ██ ██      ██   ██     ██  ██  ██ ██      ██  ██ ██ ██    ██\n" +
                 " ██████  ███████ ███████ ██   ██     ██      ██ ███████ ██   ████  ██████");
         System.out.println(" Make a selection ");
         System.out.println("-------------------");
@@ -49,48 +49,51 @@ public class UserMenu {
 
     private void runFullWorkflow() {
         try {
-            System.out.println("\n===== FULL WORKFLOW =====");
+            System.out.println("\n===== FULL WORKFLOW STARTED=====");
 
+            System.out.println("1) Fetching data from database...");
             List<Restaurant> list = restaurantRepository.findAll();
             if (list.isEmpty()) {
                 System.out.println("Database is empty.");
                 return;
             }
-
             System.out.println("Data fetched from DB.");
 
+            System.out.println("2) Transforming POJO to XML...");
             File xmlFile = new File(XML_PATH);
-
             RestaurantList wrapper = new RestaurantList(list);
+
             xmlTransformationService.transformToXML(wrapper, xmlFile);
-
-            DTDValidator.validate(xmlFile);
-
-            xmlValidator.validate(xmlFile, new File(XSD_PATH));
-
-            xmlTransformationService.transformToHTML(
-                    xmlFile,
-                    new File("src/main/resources/restaurant-to-html.xsl"),
-                    new File("output.html")
-            );
-
-            xmlTransformationService.transformToPDF(
-                    xmlFile,
-                    new File("src/main/resources/restaurant-to-pdf.xsl"),
-                    new File("output.pdf")
-            );
-
             RestaurantList result =
                     xmlTransformationService.transformToPOJO(
                             xmlFile,
                             new File(XSD_PATH),
                             RestaurantList.class
                     );
-
-            System.out.println("Result object:");
+            System.out.println("3) Transforming XML to POJO");
             result.getRestaurants().forEach(System.out::println);
 
-            System.out.println("===== DONE =====\n");
+            System.out.println("4) Validating XML against DTD...");
+            DTDValidator.validate(xmlFile);
+
+            System.out.println("5) Validating XML against XSD...");
+            xmlValidator.validate(xmlFile, new File(XSD_PATH));
+
+            System.out.println("6) Transforming XML to HTML");
+            xmlTransformationService.transformToHTML(
+                    xmlFile,
+                    new File("src/main/resources/restaurant-to-html.xsl"),
+                    new File("restaurant2.html")
+            );
+
+            System.out.println("7) Transforming XML to PDF");
+            xmlTransformationService.transformToPDF(
+                    xmlFile,
+                    new File("src/main/resources/restaurant-to-pdf.xsl"),
+                    new File("restaurant2.pdf")
+            );
+
+            System.out.println("===== FULL WORKFLOW FINISHED SUCCESSFULLY =====\n");
 
         } catch (Exception e) {
             e.printStackTrace();

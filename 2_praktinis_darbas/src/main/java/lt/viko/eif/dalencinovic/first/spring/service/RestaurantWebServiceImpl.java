@@ -1,27 +1,34 @@
 package lt.viko.eif.dalencinovic.first.spring.service;
 
+import lt.viko.eif.dalencinovic.first.spring.db.RestaurantRepository;
 import lt.viko.eif.dalencinovic.first.spring.model.MenuItem;
 import lt.viko.eif.dalencinovic.first.spring.model.Order;
 import lt.viko.eif.dalencinovic.first.spring.model.Restaurant;
 
 import jakarta.jws.WebService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 @WebService(endpointInterface = "lt.viko.eif.dalencinovic.first.spring.service.RestaurantWebService")
 public class RestaurantWebServiceImpl implements RestaurantWebService{
-    private static List<Restaurant> restaurants = new ArrayList<>();
-    private static List<Order> orders = new ArrayList<>();
+    @Autowired
+    private RestaurantRepository restaurantRepository;
+
+    private static List<Order> orders=new ArrayList<>();
 
     @Override
     public Restaurant getRestaurant(Long id) {
-        return restaurants.stream().filter(r -> r.getId().equals(id))
-                .findFirst().orElse(null);
+        return restaurantRepository.findById(id).orElse(null);
     }
 
     @Override
     public List<MenuItem> getMenu(Long restaurantId) {
-        return getRestaurant(restaurantId).getMenu();
+        Restaurant restaurant=getRestaurant(restaurantId);
+        return restaurant!=null ? restaurant.getMenu():null;
     }
 
     @Override
