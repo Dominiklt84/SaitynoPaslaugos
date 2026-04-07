@@ -57,11 +57,12 @@ public class UserMenu {
                 return;
             }
 
-            Restaurant restaurant = list.get(0);
             System.out.println("Data fetched from DB.");
 
             File xmlFile = new File(XML_PATH);
-            xmlTransformationService.transformToXML(restaurant, xmlFile);
+
+            RestaurantList wrapper = new RestaurantList(list);
+            xmlTransformationService.transformToXML(wrapper, xmlFile);
 
             DTDValidator.validate(xmlFile);
 
@@ -69,25 +70,25 @@ public class UserMenu {
 
             xmlTransformationService.transformToHTML(
                     xmlFile,
-                    new File("src/main/resources/restaurant.xsl"),
-                    new File("restaurant2.html")
+                    new File("src/main/resources/restaurant-to-html.xsl"),
+                    new File("output.html")
             );
 
             xmlTransformationService.transformToPDF(
                     xmlFile,
-                    new File("src/main/resources/restaurant-fo.xsl"),
-                    new File("restaurant2.pdf")
+                    new File("src/main/resources/restaurant-to-pdf.xsl"),
+                    new File("output.pdf")
             );
 
-            Restaurant result =
+            RestaurantList result =
                     xmlTransformationService.transformToPOJO(
                             xmlFile,
                             new File(XSD_PATH),
-                            Restaurant.class
+                            RestaurantList.class
                     );
 
             System.out.println("Result object:");
-            System.out.println(result);
+            result.getRestaurants().forEach(System.out::println);
 
             System.out.println("===== DONE =====\n");
 
@@ -129,13 +130,12 @@ public class UserMenu {
                     break;
 
                 case 4:
-                    Restaurant result =
-                            xmlTransformationService.transformToPOJO(
-                                    new File(XML_PATH),
-                                    new File(XSD_PATH),
-                                    Restaurant.class
-                            );
-                    System.out.println(result);
+                    RestaurantList result = xmlTransformationService.transformToPOJO(
+                            new File(XML_PATH),
+                            new File(XSD_PATH),
+                            RestaurantList.class
+                    );
+                    System.out.println(result.getRestaurants());
                     break;
 
                 case 5:

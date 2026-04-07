@@ -9,13 +9,17 @@ import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
 import org.springframework.stereotype.Service;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 
 import javax.xml.XMLConstants;
+import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.sax.SAXResult;
+import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
@@ -71,15 +75,21 @@ public class XMLTransformationService {
      */
     public <T> T transformToPOJO(File xmlFile, File xsdFile, Class<T> clazz){
         try {
-            JAXBContext jaxbContext=JAXBContext.newInstance(clazz);
-            Unmarshaller unmarshaller=jaxbContext.createUnmarshaller();
+            JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
             SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-
             Schema schema = schemaFactory.newSchema(new StreamSource(xsdFile));
             unmarshaller.setSchema(schema);
 
-            return clazz.cast(unmarshaller.unmarshal(xmlFile));
+            SAXParserFactory spf = SAXParserFactory.newInstance();
+            spf.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+
+            XMLReader xmlReader = spf.newSAXParser().getXMLReader();
+
+            Source source = new SAXSource(xmlReader, new InputSource(new FileInputStream(xmlFile)));
+
+            return clazz.cast(unmarshaller.unmarshal(source));
         }catch (Exception e){
             throw new RuntimeException("XML to POJO transformation failed", e);
         }
