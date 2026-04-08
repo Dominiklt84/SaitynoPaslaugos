@@ -32,6 +32,9 @@ public class RestaurantWebServiceImpl implements RestaurantWebService{
         return restaurantRepository.findById(id).orElse(null);
     }
 
+    /**
+     * Retrieves menu from database.
+     */
     @Override
     public List<MenuItem> getMenu(Long restaurantId) {
         Restaurant restaurant=getRestaurant(restaurantId);

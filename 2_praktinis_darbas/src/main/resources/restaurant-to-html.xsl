@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-
     <xsl:output method="html" encoding="UTF-8" indent="yes"/>
-
     <xsl:template match="/">
-
         <html>
             <head>
                 <title>Restaurant Report</title>
-
                 <style>
                     body {
                     font-family: Arial;
@@ -59,13 +55,9 @@
                     vertical-align: middle;
                     }
                 </style>
-
             </head>
-
             <body>
-
                 <h1>Restaurant Report</h1>
-
                 <table>
                     <tr>
                         <th>Name</th>
@@ -74,9 +66,7 @@
                         <th>Status</th>
                         <th>Menu</th>
                     </tr>
-
                     <xsl:for-each select="restaurants/restaurant">
-
                         <tr>
                             <!-- NAME -->
                             <td>
@@ -131,15 +121,10 @@
                                     </xsl:otherwise>
                                 </xsl:choose>
                             </td>
-
                         </tr>
-
                     </xsl:for-each>
-
                 </table>
-
             </body>
         </html>
-
     </xsl:template>
 </xsl:stylesheet>

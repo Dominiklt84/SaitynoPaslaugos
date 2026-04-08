@@ -18,6 +18,7 @@ public class DTDValidator {
      */
     private DTDValidator() {
     }
+
     /**
      * Validates XML file against DTD defined in DOCTYPE declaration.
      *

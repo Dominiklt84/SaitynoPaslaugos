@@ -7,6 +7,7 @@ import jakarta.persistence.*;
  */
 @MappedSuperclass
 public class BaseEntity {
+
     /**
      * Primary key identifier.
      */

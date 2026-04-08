@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
  * Provides CRUD operations for Restaurant.
  */
 @Repository
-public interface RestaurantRepository  extends JpaRepository<Restaurant,Long> {
+public interface RestaurantRepository extends JpaRepository<Restaurant,Long> {
 }

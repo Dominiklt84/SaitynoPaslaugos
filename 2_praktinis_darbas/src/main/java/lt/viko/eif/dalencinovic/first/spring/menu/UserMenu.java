@@ -80,12 +80,10 @@ public class UserMenu {
             xmlTransformationService.transformToXML(wrapper, xmlFile);
 
             // 3. Transform to POJO
-            RestaurantList result =
-                    xmlTransformationService.transformToPOJO(
-                            xmlFile,
-                            new File(XSD_PATH),
-                            RestaurantList.class
-                    );
+            RestaurantList result = xmlTransformationService.transformToPOJO(
+                    xmlFile,
+                    new File(XSD_PATH),
+                    RestaurantList.class);
             System.out.println("3) Transforming XML to POJO");
             result.getRestaurants().forEach(System.out::println);
 
@@ -102,8 +100,7 @@ public class UserMenu {
             xmlTransformationService.transformToHTML(
                     xmlFile,
                     new File("src/main/resources/restaurant-to-html.xsl"),
-                    new File("restaurant2.html")
-            );
+                    new File("restaurant2.html"));
 
             // 7. Transform to PDF
             System.out.println("7) Transforming XML to PDF");

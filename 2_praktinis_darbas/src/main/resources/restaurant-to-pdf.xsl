@@ -2,20 +2,15 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:fo="http://www.w3.org/1999/XSL/Format"
                 version="1.0">
-
     <xsl:output encoding="UTF-8" indent="yes"/>
-
     <xsl:template match="/">
-
         <fo:root>
-
             <!-- LAYOUT -->
             <fo:layout-master-set>
                 <fo:simple-page-master master-name="A4"
                                        page-height="297mm"
                                        page-width="210mm"
                                        margin="10mm">
-
                     <fo:region-body margin-top="30mm"/>
                     <fo:region-before extent="25mm"/>
                 </fo:simple-page-master>
@@ -41,7 +36,6 @@
 
                     <!-- TABLE -->
                     <fo:table width="100%" table-layout="fixed" border="0.5pt solid black" border-collapse="collapse">
-
                         <fo:table-column column-width="20%"/>
                         <fo:table-column column-width="20%"/>
                         <fo:table-column column-width="20%"/>
@@ -61,11 +55,8 @@
 
                         <!-- BODY -->
                         <fo:table-body>
-
                             <xsl:for-each select="restaurants/restaurant">
-
                                 <fo:table-row>
-
                                     <!-- NAME -->
                                     <fo:table-cell border="0.5pt solid black" padding="4pt">
                                         <fo:block>
@@ -114,7 +105,6 @@
                                     <!-- MENU -->
                                     <fo:table-cell border="0.5pt solid black" padding="4pt">
                                         <fo:block>
-
                                             <xsl:choose>
                                                 <xsl:when test="menu/item">
                                                     <xsl:for-each select="menu/item">
@@ -122,29 +112,18 @@
                                                         <fo:block/>
                                                     </xsl:for-each>
                                                 </xsl:when>
-
                                                 <xsl:otherwise>
                                                     <fo:inline font-style="italic">No menu</fo:inline>
                                                 </xsl:otherwise>
-
                                             </xsl:choose>
-
                                         </fo:block>
                                     </fo:table-cell>
-
                                 </fo:table-row>
-
                             </xsl:for-each>
-
                         </fo:table-body>
-
                     </fo:table>
-
                 </fo:flow>
             </fo:page-sequence>
-
         </fo:root>
-
     </xsl:template>
-
 </xsl:stylesheet>
