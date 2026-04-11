@@ -4,6 +4,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lt.viko.eif.dalencinovic.first.spring.service.DTDValidator;
 import lt.viko.eif.dalencinovic.first.spring.service.XMLValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,6 +24,12 @@ public class ValidateServlet extends HttpServlet {
      */
     @Autowired
     private XMLValidator xmlValidator;
+
+    /**
+     * Service for validating XML files using DTD schema.
+     */
+    @Autowired
+    private DTDValidator dtdValidator;
 
     /**
      * Handles HTTP GET requests.
@@ -45,6 +52,10 @@ public class ValidateServlet extends HttpServlet {
         try {
             // Validate XML against XSD schema
             xmlValidator.validate(xml, xsd);
+
+            // Validate XML against DTD schema
+            dtdValidator.validate(xml);
+
             out.println("<p>XML is valid </p>");
         } catch (Exception e) {
             out.println("<p>Validation failed </p>");
