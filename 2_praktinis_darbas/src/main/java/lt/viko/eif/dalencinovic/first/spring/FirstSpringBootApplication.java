@@ -2,6 +2,7 @@ package lt.viko.eif.dalencinovic.first.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.server.servlet.context.ServletComponentScan;
 
 /**
  * Main entry point of the Spring Boot application.
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * executes {@code CommandLineRunner}, which starts the user menu.
  */
 @SpringBootApplication
+@ServletComponentScan
 public class FirstSpringBootApplication {
 
 	/**

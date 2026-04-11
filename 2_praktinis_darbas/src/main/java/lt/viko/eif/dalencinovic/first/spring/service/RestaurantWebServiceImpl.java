@@ -40,4 +40,12 @@ public class RestaurantWebServiceImpl implements RestaurantWebService{
         Restaurant restaurant=getRestaurant(restaurantId);
         return restaurant!=null ? restaurant.getMenu():null;
     }
+
+    /**
+     * Retrieves all restaurants from the database.
+     */
+    @Override
+    public List<Restaurant> getAllRestaurants() {
+        return restaurantRepository.findAll();
+    }
 }

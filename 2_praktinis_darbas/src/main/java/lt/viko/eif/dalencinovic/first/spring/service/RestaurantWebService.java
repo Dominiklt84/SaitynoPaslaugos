@@ -32,4 +32,11 @@ public interface RestaurantWebService {
     @WebMethod
     List<MenuItem> getMenu(Long restaurantId);
 
-}
+    /**
+     * Retrieves all available restaurants.
+     *
+     * @return list of all restaurants
+     */
+    @WebMethod
+    List<Restaurant> getAllRestaurants();
+    }
