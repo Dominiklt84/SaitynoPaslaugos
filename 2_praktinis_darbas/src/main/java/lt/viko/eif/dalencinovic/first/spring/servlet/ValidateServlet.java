@@ -26,12 +26,6 @@ public class ValidateServlet extends HttpServlet {
     private XMLValidator xmlValidator;
 
     /**
-     * Service for validating XML files using DTD schema.
-     */
-    @Autowired
-    private DTDValidator dtdValidator;
-
-    /**
      * Handles HTTP GET requests.
      * Validates XML file and displays the result in HTML format.
      *
@@ -52,9 +46,6 @@ public class ValidateServlet extends HttpServlet {
         try {
             // Validate XML against XSD schema
             xmlValidator.validate(xml, xsd);
-
-            // Validate XML against DTD schema
-            dtdValidator.validate(xml);
 
             out.println("<p>XML is valid </p>");
         } catch (Exception e) {
