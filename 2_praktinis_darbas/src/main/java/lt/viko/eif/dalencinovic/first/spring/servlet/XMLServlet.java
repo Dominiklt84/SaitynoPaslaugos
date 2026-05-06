@@ -8,6 +8,8 @@ import lt.viko.eif.dalencinovic.first.spring.model.Restaurant;
 import lt.viko.eif.dalencinovic.first.spring.model.RestaurantList;
 import lt.viko.eif.dalencinovic.first.spring.service.RestaurantWebService;
 import lt.viko.eif.dalencinovic.first.spring.service.XMLTransformationService;
+import lt.viko.eif.dalencinovic.first.spring.soap.GetAllRestaurantsRequest;
+import lt.viko.eif.dalencinovic.first.spring.soap.GetAllRestaurantsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.*;
@@ -45,8 +47,14 @@ public class XMLServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        // Retrieve restaurant data
-        List<Restaurant> list = service.getAllRestaurants();
+        // Create SOAP request object
+        GetAllRestaurantsRequest request = new GetAllRestaurantsRequest();
+
+        // Retrieve SOAP response
+        GetAllRestaurantsResponse response = service.getAllRestaurants(request);
+
+        // Extract restaurant list
+        List<Restaurant> list = response.getRestaurants();
 
         // Define XML output file
         File xmlFile = new File("src/main/resources/restaurant.xml");

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="833da3c5-fbdc-400c-a62f-df90ddf57914" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/soap/GetAllRestaurantsRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/soap/GetAllRestaurantsResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/soap/GetMenuRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/soap/GetMenuResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/soap/GetRestaurantRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/soap/GetRestaurantResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2_praktinis_darbas/docs/lt/viko/eif/dalencinovic/first/spring/configuration/SoapConfig.html" beforeDir="false" afterPath="$PROJECT_DIR$/../2_praktinis_darbas/docs/lt/viko/eif/dalencinovic/first/spring/configuration/SoapConfig.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2_praktinis_darbas/restaurant1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../2_praktinis_darbas/restaurant1.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2_praktinis_darbas/restaurant2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../2_praktinis_darbas/restaurant2.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/configuration/SoapConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/configuration/WsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/service/RestaurantWebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/service/RestaurantWebService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/service/RestaurantWebServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/service/RestaurantWebServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/servlet/FetchServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/servlet/FetchServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/servlet/XMLServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/java/lt/viko/eif/dalencinovic/first/spring/servlet/XMLServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../2_praktinis_darbas/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SOAP_Client/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/SOAP_Client.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/lt.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/out/production/viko/lt/viko/eif/dalencinovic/first/spring/service/BaseEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/out/production/viko/lt/viko/eif/dalencinovic/first/spring/service/GetAllRestaurants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/out/production/viko/lt/viko/eif/dalencinovic/first/spring/service/GetAllRestaurantsResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/out/production/viko/lt/viko/eif/dalencinovic/first/spring/service/GetMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/out/production/viko/lt/viko/eif/dalencinovic/first/spring/service/GetMenuResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/out/production/viko/lt/viko/eif/dalencinovic/first/spring/service/GetRestaurant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/out/production/viko/lt/viko/eif/dalencinovic/first/spring/service/GetRestaurantResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/out/production/viko/lt/viko/eif/dalencinovic/first/spring/service/MenuItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/out/production/viko/lt/viko/eif/dalencinovic/first/spring/service/ObjectFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/out/production/viko/lt/viko/eif/dalencinovic/first/spring/service/Restaurant$Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/out/production/viko/lt/viko/eif/dalencinovic/first/spring/service/Restaurant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/out/production/viko/lt/viko/eif/dalencinovic/first/spring/service/RestaurantWebService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/out/production/viko/lt/viko/eif/dalencinovic/first/spring/service/RestaurantWebServiceImplService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/out/production/viko/lt/viko/eif/dalencinovic/first/spring/service/TestClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/out/production/viko/lt/viko/eif/dalencinovic/first/spring/service/package-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/BaseEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/BaseEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/GetAllRestaurants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/GetAllRestaurants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/GetAllRestaurantsResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/GetAllRestaurantsResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/GetMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/GetMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/GetMenuResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/GetMenuResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/GetRestaurant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/GetRestaurant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/GetRestaurantResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/GetRestaurantResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/MenuItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/MenuItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/ObjectFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/ObjectFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/Restaurant$Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/Restaurant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/Restaurant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/RestaurantWebService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/RestaurantWebService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/RestaurantWebServiceImplService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/RestaurantWebServiceImplService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/TestClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/package-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/client/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/BaseEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/BaseEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/GetAllRestaurants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/GetAllRestaurants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/GetAllRestaurantsResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/GetAllRestaurantsResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/GetMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/GetMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/GetMenuResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/GetMenuResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/GetRestaurant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/GetRestaurant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/GetRestaurantResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/GetRestaurantResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/MenuItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/MenuItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/ObjectFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/ObjectFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/Restaurant$Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/Restaurant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/Restaurant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/RestaurantWebService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/RestaurantWebService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/RestaurantWebServiceImplService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/RestaurantWebServiceImplService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/package-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/eif/dalencinovic/first/spring/service/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/lt/viko/viko.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/out/production/lt/lt/viko/eif/dalencinovic/first/spring/service/BaseEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/out/production/lt/lt/viko/eif/dalencinovic/first/spring/service/GetAllRestaurants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/out/production/lt/lt/viko/eif/dalencinovic/first/spring/service/GetAllRestaurantsResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/out/production/lt/lt/viko/eif/dalencinovic/first/spring/service/GetMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/out/production/lt/lt/viko/eif/dalencinovic/first/spring/service/GetMenuResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/out/production/lt/lt/viko/eif/dalencinovic/first/spring/service/GetRestaurant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/out/production/lt/lt/viko/eif/dalencinovic/first/spring/service/GetRestaurantResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/out/production/lt/lt/viko/eif/dalencinovic/first/spring/service/MenuItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/out/production/lt/lt/viko/eif/dalencinovic/first/spring/service/ObjectFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/out/production/lt/lt/viko/eif/dalencinovic/first/spring/service/Restaurant$Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/out/production/lt/lt/viko/eif/dalencinovic/first/spring/service/Restaurant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/out/production/lt/lt/viko/eif/dalencinovic/first/spring/service/RestaurantWebService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/out/production/lt/lt/viko/eif/dalencinovic/first/spring/service/RestaurantWebServiceImplService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/out/production/lt/lt/viko/eif/dalencinovic/first/spring/service/TestClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_Client/out/production/lt/lt/viko/eif/dalencinovic/first/spring/service/package-info.class" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3DLiVwjVvTcIqjS7lidtPl0h6wE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.TestClient.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/dalecinovic/Documents/GitHub/SaitynoPaslaugos/untitled folder",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="833da3c5-fbdc-400c-a62f-df90ddf57914" name="Changes" comment="" />
+      <created>1778067777666</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1778067777666</updated>
+      <workItem from="1778067778676" duration="608000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

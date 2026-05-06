@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/lt.iml" filepath="$PROJECT_DIR$/lt.iml" />
-      <module fileurl="file://$PROJECT_DIR$/viko/viko.iml" filepath="$PROJECT_DIR$/viko/viko.iml" />
-    </modules>
-  </component>
-</project>

@@ -4,10 +4,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import lt.viko.eif.dalencinovic.first.spring.model.Restaurant;
-
 import lt.viko.eif.dalencinovic.first.spring.service.RestaurantWebService;
+import lt.viko.eif.dalencinovic.first.spring.soap.GetAllRestaurantsRequest;
+import lt.viko.eif.dalencinovic.first.spring.soap.GetAllRestaurantsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -38,7 +38,14 @@ public class FetchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        List<Restaurant> list = service.getAllRestaurants();
+        // Create SOAP request object
+        GetAllRestaurantsRequest request = new GetAllRestaurantsRequest();
+
+        // Retrieve SOAP response
+        GetAllRestaurantsResponse response = service.getAllRestaurants(request);
+
+        // Extract restaurant list
+        List<Restaurant> list = response.getRestaurants();
 
         PrintWriter out = resp.getWriter();
         out.println("<html><body>");
