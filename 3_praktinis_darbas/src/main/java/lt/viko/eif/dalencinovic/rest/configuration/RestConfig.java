@@ -19,6 +19,9 @@ public class RestConfig {
     @Value("${restaurant.service.endpoint-url}")
     private String endpointUrl;
 
+    @Value("${openapi.url}")
+    private String openApiUrl;
+
     /**
      * Prints REST service information after startup.
      */
@@ -30,6 +33,7 @@ public class RestConfig {
         System.out.println("Restaurant REST service started");
         System.out.println("Endpoint: " + endpointUrl);
         System.out.println("WADL: " + endpointUrl + "/application.wadl");
+        System.out.println("OpenAPI: " + openApiUrl);
         System.out.println("=================================");
         System.out.println();
 

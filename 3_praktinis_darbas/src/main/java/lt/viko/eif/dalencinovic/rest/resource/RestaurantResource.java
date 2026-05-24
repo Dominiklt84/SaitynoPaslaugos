@@ -24,43 +24,48 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestaurantResource {
 
-    private static final Logger logger =
-            LoggerFactory.getLogger(RestaurantResource.class);
+    private static final Logger logger = LoggerFactory.getLogger(RestaurantResource.class);
 
     @Autowired
     private RestaurantRepository restaurantRepository;
 
     @GET
     public List<Restaurant> getRestaurants() {
+
+        logger.debug("Fetching all restaurants");
+
         return restaurantRepository.findAll();
     }
 
     @GET
     @Path("/{id}")
-    public Restaurant getRestaurantById(
-            @PathParam("id") Long id) {
+    public Restaurant getRestaurantById(@PathParam("id") Long id) {
 
-        return restaurantRepository.findById(id)
-                .orElse(null);
+        logger.debug("Path parameter: id: " + id);
+
+        return restaurantRepository.findById(id).orElse(null);
     }
 
     @POST
     public Restaurant addRestaurant(Restaurant restaurant) {
+
+        logger.debug("Adding restaurant: " + restaurant.getName());
 
         return restaurantRepository.save(restaurant);
     }
 
     @PUT
     @Path("/{id}")
-    public Restaurant updateRestaurant(
-            @PathParam("id") Long id,
-            Restaurant updatedRestaurant) {
+    public Restaurant updateRestaurant(@PathParam("id") Long id, Restaurant updatedRestaurant) {
 
-        Restaurant restaurant =
-                restaurantRepository.findById(id)
-                        .orElse(null);
+        logger.debug("Updating restaurant with id: " + id);
+
+        Restaurant restaurant = restaurantRepository.findById(id).orElse(null);
 
         if (restaurant == null) {
+
+            logger.error("Restaurant not found with id: " + id);
+
             return null;
         }
 
@@ -75,14 +80,15 @@ public class RestaurantResource {
 
     @DELETE
     @Path("/{id}")
-    public String deleteRestaurant(
-            @PathParam("id") Long id) {
+    public String deleteRestaurant(@PathParam("id") Long id) {
 
-        Restaurant restaurant =
-                restaurantRepository.findById(id)
-                        .orElse(null);
+        logger.debug("Deleting restaurant with id: " + id);
+        Restaurant restaurant = restaurantRepository.findById(id).orElse(null);
 
         if (restaurant == null) {
+
+            logger.error("Restaurant not found with id: " + id);
+
             return "Restaurant not found";
         }
 
@@ -93,30 +99,20 @@ public class RestaurantResource {
 
     @GET
     @Path("/search")
-    public List<Restaurant> searchRestaurants(
-            @DefaultValue("0")
-            @QueryParam("rating") float rating) {
+    public List<Restaurant> searchRestaurants(@DefaultValue("0") @QueryParam("rating") float rating) {
 
-        return restaurantRepository.findAll()
-                .stream()
-                .filter(r -> r.getRating() >= rating)
-                .toList();
+        logger.debug("Query parameter: rating = " + rating);
+
+        return restaurantRepository.findAll().stream().filter(r -> r.getRating() >= rating).toList();
     }
 
     @GET
-    @Path("/header")
-    public String getHeader(
-            @HeaderParam("client-name") String clientName) {
+    @Path("/owner")
+    public String getRestaurantOwner(@HeaderParam("Restaurant-Owner") String ownerName) {
 
-        return "Client name: " + clientName;
-    }
+        logger.debug("Header parameter: Restaurant-Owner = " + ownerName);
 
-    @GET
-    @Path("/cookie")
-    public String getCookie(
-            @CookieParam("sessionId") String sessionId) {
-
-        return "Session ID: " + sessionId;
+        return "Restaurant owner: " + ownerName;
     }
 
     @GET
@@ -125,10 +121,44 @@ public class RestaurantResource {
 
         for (String header : headers.getRequestHeaders().keySet()) {
 
-            System.out.println(header + " -> "
-                    + headers.getRequestHeaders().get(header));
+            System.out.printf("This header was set: %-20s %50s\n",
+                    header, headers.getRequestHeaders().get(header));
         }
 
-        return "Headers printed in console";
+        return " ";
+    }
+
+    @POST
+    @Path("/form")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public String addRestaurantForm(@FormParam("name") String name, @FormParam("location") String location,
+            @FormParam("rating") float rating) {
+
+        logger.debug("Form parameters: name: "+name+", location: "+location+", rating: "+rating);
+
+        Restaurant restaurant = new Restaurant();
+
+        restaurant.setName(name);
+        restaurant.setLocation(location);
+        restaurant.setRating(rating);
+        restaurant.setOpen(true);
+
+        restaurantRepository.save(restaurant);
+
+        return "Restaurant added successfully";
+    }
+
+    @GET
+    @Path("/matrix/{name}")
+    public List<Restaurant> getRestaurantInfo(@PathParam("name") String name, @MatrixParam("city") String city,
+                                              @MatrixParam("rating") float rating) {
+
+        logger.debug("Matrix parameters: city: "+city+", rating: "+rating);
+
+        return restaurantRepository.findAll().stream()
+                .filter(r -> r.getName().equalsIgnoreCase(name))
+                .filter(r -> r.getLocation().equalsIgnoreCase(city))
+                .filter(r -> r.getRating() >= rating)
+                .toList();
     }
 }
