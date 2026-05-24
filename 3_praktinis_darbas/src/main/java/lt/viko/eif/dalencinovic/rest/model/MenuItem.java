@@ -46,7 +46,6 @@ public class MenuItem extends BaseEntity{
     public MenuItem() {
     }
 
-
     /**
      * Constructs a menu item with given parameters.
      *

@@ -1,7 +1,6 @@
 package lt.viko.eif.dalencinovic.rest.configuration;
 
 import jakarta.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
@@ -36,6 +35,5 @@ public class RestConfig {
         System.out.println("OpenAPI: " + openApiUrl);
         System.out.println("=================================");
         System.out.println();
-
     }
 }

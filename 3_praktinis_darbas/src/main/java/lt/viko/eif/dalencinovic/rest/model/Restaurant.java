@@ -2,7 +2,6 @@ package lt.viko.eif.dalencinovic.rest.model;
 
 import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.*;
-
 import java.util.List;
 
 /**

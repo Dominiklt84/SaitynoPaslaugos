@@ -14,7 +14,6 @@ public class JerseyConfig extends ResourceConfig {
 
         register(RestaurantResource.class);
         register(MenuResource.class);
-
         register(JacksonFeature.class);
         register(OpenApiResource.class);
     }

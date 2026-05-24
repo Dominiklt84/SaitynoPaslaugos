@@ -4,15 +4,12 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.HttpHeaders;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Context;
-
 import lt.viko.eif.dalencinovic.rest.db.RestaurantRepository;
 import lt.viko.eif.dalencinovic.rest.model.Restaurant;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 
 @Component
@@ -64,8 +61,6 @@ public class RestaurantResource {
 
         if (restaurant == null) {
 
-            logger.error("Restaurant not found with id: " + id);
-
             return null;
         }
 
@@ -86,8 +81,6 @@ public class RestaurantResource {
         Restaurant restaurant = restaurantRepository.findById(id).orElse(null);
 
         if (restaurant == null) {
-
-            logger.error("Restaurant not found with id: " + id);
 
             return "Restaurant not found";
         }
@@ -121,8 +114,8 @@ public class RestaurantResource {
 
         for (String header : headers.getRequestHeaders().keySet()) {
 
-            System.out.printf("This header was set: %-20s %50s\n",
-                    header, headers.getRequestHeaders().get(header));
+            System.out.printf("This header was set: %-20s %50s\n", header
+                    , headers.getRequestHeaders().get(header));
         }
 
         return " ";
@@ -132,7 +125,7 @@ public class RestaurantResource {
     @Path("/form")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public String addRestaurantForm(@FormParam("name") String name, @FormParam("location") String location,
-            @FormParam("rating") float rating) {
+                                    @FormParam("rating") float rating) {
 
         logger.debug("Form parameters: name: "+name+", location: "+location+", rating: "+rating);
 
