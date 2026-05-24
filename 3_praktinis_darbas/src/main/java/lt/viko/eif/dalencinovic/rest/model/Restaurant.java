@@ -47,8 +47,8 @@ public class Restaurant extends BaseEntity{
     /**
      * List of menu items available in the restaurant.
      */
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "restaurant_id")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "restaurant_id", nullable = false)
     @XmlElementWrapper(name = "menu")
     @XmlElement(name="item")
     private List<MenuItem> menu;
