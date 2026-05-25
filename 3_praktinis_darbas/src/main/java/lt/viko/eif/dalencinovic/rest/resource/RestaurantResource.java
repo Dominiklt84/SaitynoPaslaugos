@@ -12,6 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
+/**
+ * REST resource class responsible
+ * for restaurant operations.
+ *
+ * Provides CRUD operations,
+ * filtering, headers, forms,
+ * and matrix parameter examples.
+ */
 @Component
 @Path("/restaurants")
 @Produces({
@@ -21,11 +29,23 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestaurantResource {
 
+    /**
+     * Logger instance for RestaurantResource class.
+     */
     private static final Logger logger = LoggerFactory.getLogger(RestaurantResource.class);
 
+    /**
+     * Repository used for restaurant
+     * database operations.
+     */
     @Autowired
     private RestaurantRepository restaurantRepository;
 
+    /**
+     * Returns all restaurants.
+     *
+     * @return list of restaurants
+     */
     @GET
     public List<Restaurant> getRestaurants() {
 
@@ -34,6 +54,12 @@ public class RestaurantResource {
         return restaurantRepository.findAll();
     }
 
+    /**
+     * Returns restaurant by identifier.
+     *
+     * @param id restaurant identifier
+     * @return restaurant object
+     */
     @GET
     @Path("/{id}")
     public Restaurant getRestaurantById(@PathParam("id") Long id) {
@@ -43,6 +69,12 @@ public class RestaurantResource {
         return restaurantRepository.findById(id).orElse(null);
     }
 
+    /**
+     * Adds new restaurant.
+     *
+     * @param restaurant restaurant object
+     * @return saved restaurant
+     */
     @POST
     public Restaurant addRestaurant(Restaurant restaurant) {
 
@@ -51,6 +83,13 @@ public class RestaurantResource {
         return restaurantRepository.save(restaurant);
     }
 
+    /**
+     * Updates existing restaurant.
+     *
+     * @param id restaurant identifier
+     * @param updatedRestaurant updated restaurant object
+     * @return updated restaurant
+     */
     @PUT
     @Path("/{id}")
     public Restaurant updateRestaurant(@PathParam("id") Long id, Restaurant updatedRestaurant) {
@@ -73,6 +112,12 @@ public class RestaurantResource {
         return restaurantRepository.save(restaurant);
     }
 
+    /**
+     * Deletes restaurant by identifier.
+     *
+     * @param id restaurant identifier
+     * @return operation result message
+     */
     @DELETE
     @Path("/{id}")
     public String deleteRestaurant(@PathParam("id") Long id) {
@@ -90,6 +135,12 @@ public class RestaurantResource {
         return "Restaurant deleted";
     }
 
+    /**
+     * Searches restaurants by minimum rating.
+     *
+     * @param rating minimum restaurant rating
+     * @return filtered list of restaurants
+     */
     @GET
     @Path("/search")
     public List<Restaurant> searchRestaurants(@DefaultValue("0") @QueryParam("rating") float rating) {
@@ -99,6 +150,13 @@ public class RestaurantResource {
         return restaurantRepository.findAll().stream().filter(r -> r.getRating() >= rating).toList();
     }
 
+    /**
+     * Returns restaurant owner
+     * from request header.
+     *
+     * @param ownerName restaurant owner name
+     * @return owner information
+     */
     @GET
     @Path("/owner")
     public String getRestaurantOwner(@HeaderParam("Restaurant-Owner") String ownerName) {
@@ -108,6 +166,13 @@ public class RestaurantResource {
         return "Restaurant owner: " + ownerName;
     }
 
+    /**
+     * Prints all request headers
+     * to application console.
+     *
+     * @param headers HTTP request headers
+     * @return operation result message
+     */
     @GET
     @Path("/headers")
     public String getAllHeaders(@Context HttpHeaders headers){
@@ -121,6 +186,15 @@ public class RestaurantResource {
         return " ";
     }
 
+    /**
+     * Adds new restaurant
+     * using HTML form parameters.
+     *
+     * @param name restaurant name
+     * @param location restaurant location
+     * @param rating restaurant rating
+     * @return operation result message
+     */
     @POST
     @Path("/form")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -141,6 +215,15 @@ public class RestaurantResource {
         return "Restaurant added successfully";
     }
 
+    /**
+     * Searches restaurants
+     * using matrix parameters.
+     *
+     * @param name restaurant name
+     * @param city restaurant city
+     * @param rating minimum restaurant rating
+     * @return filtered list of restaurants
+     */
     @GET
     @Path("/matrix/{name}")
     public List<Restaurant> getRestaurantInfo(@PathParam("name") String name, @MatrixParam("city") String city,

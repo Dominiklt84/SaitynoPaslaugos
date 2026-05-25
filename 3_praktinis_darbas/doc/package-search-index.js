@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"lt.viko.eif.dalencinovic.rest"},{"l":"lt.viko.eif.dalencinovic.rest.configuration"},{"l":"lt.viko.eif.dalencinovic.rest.db"},{"l":"lt.viko.eif.dalencinovic.rest.model"},{"l":"lt.viko.eif.dalencinovic.rest.resource"}];updateSearchResults();

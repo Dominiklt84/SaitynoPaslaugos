@@ -9,6 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.List;
 
+/**
+ * REST resource class responsible
+ * for menu item operations.
+ *
+ * Provides CRUD operations for menu items
+ * and search functionality.
+ */
 @Component
 @Path("/menu")
 @Produces({
@@ -18,9 +25,19 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class MenuResource {
 
+    /**
+     * Repository used for restaurant
+     * database operations.
+     */
     @Autowired
     private RestaurantRepository restaurantRepository;
 
+    /**
+     * Returns all menu items
+     * from all restaurants.
+     *
+     * @return list of menu items
+     */
     @GET
     public List<MenuItem> getAllMenuItems() {
 
@@ -28,6 +45,12 @@ public class MenuResource {
                 .getMenu().stream()).toList();
     }
 
+    /**
+     * Returns menu items for specific restaurant.
+     *
+     * @param restaurantId restaurant identifier
+     * @return list of menu items
+     */
     @GET
     @Path("/{restaurantId}")
     public List<MenuItem> getMenu(@PathParam("restaurantId") Long restaurantId) {
@@ -42,6 +65,13 @@ public class MenuResource {
         return restaurant.getMenu();
     }
 
+    /**
+     * Returns available menu items
+     * for specific restaurant.
+     *
+     * @param restaurantId restaurant identifier
+     * @return list of available menu items
+     */
     @GET
     @Path("/{restaurantId}/available")
     public List<MenuItem> getAvailableItems(@PathParam("restaurantId") Long restaurantId) {
@@ -56,6 +86,12 @@ public class MenuResource {
         return restaurant.getMenu().stream().filter(MenuItem::isAvailable).toList();
     }
 
+    /**
+     * Searches menu items by minimum price.
+     *
+     * @param price minimum menu item price
+     * @return filtered list of menu items
+     */
     @GET
     @Path("/search")
     public List<MenuItem> searchMenuItems(@DefaultValue("0") @QueryParam("price") float price) {
@@ -64,6 +100,14 @@ public class MenuResource {
                 .filter(item -> item.getPrice() >= price).toList();
     }
 
+    /**
+     * Adds new menu item
+     * to specific restaurant.
+     *
+     * @param restaurantId restaurant identifier
+     * @param menuItem menu item object
+     * @return saved menu item
+     */
     @POST
     @Path("/{restaurantId}")
     public MenuItem addMenuItem(@PathParam("restaurantId") Long restaurantId, MenuItem menuItem) {
@@ -82,6 +126,14 @@ public class MenuResource {
         return menuItem;
     }
 
+    /**
+     * Updates existing menu item.
+     *
+     * @param restaurantId restaurant identifier
+     * @param menuItemId menu item identifier
+     * @param updatedItem updated menu item data
+     * @return updated menu item
+     */
     @PUT
     @Path("/{restaurantId}/{menuItemId}")
     public MenuItem updateMenuItem(@PathParam("restaurantId") Long restaurantId,
@@ -111,6 +163,13 @@ public class MenuResource {
         return menuItem;
     }
 
+    /**
+     * Deletes menu item from restaurant.
+     *
+     * @param restaurantId restaurant identifier
+     * @param menuItemId menu item identifier
+     * @return operation result message
+     */
     @DELETE
     @Path("/{restaurantId}/{menuItemId}")
     public String deleteMenuItem(@PathParam("restaurantId") Long restaurantId,

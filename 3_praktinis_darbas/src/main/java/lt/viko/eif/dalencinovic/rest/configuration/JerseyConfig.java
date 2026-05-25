@@ -7,9 +7,20 @@ import lt.viko.eif.dalencinovic.rest.resource.RestaurantResource;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
+/**
+ * Jersey configuration class.
+ *
+ * Registers REST resources, JSON support,
+ * and OpenAPI support for Jersey application.
+ */
 @Component
 public class JerseyConfig extends ResourceConfig {
 
+    /**
+     * Default constructor.
+     *
+     * Registers REST resources and providers.
+     */
     public JerseyConfig() {
 
         register(RestaurantResource.class);

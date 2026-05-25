@@ -18,6 +18,9 @@ public class RestConfig {
     @Value("${restaurant.service.endpoint-url}")
     private String endpointUrl;
 
+    /**
+     * OpenAPI endpoint URL loaded from application properties.
+     */
     @Value("${openapi.url}")
     private String openApiUrl;
 
